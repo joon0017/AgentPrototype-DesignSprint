@@ -106,7 +106,7 @@ NavMeshSettings:
   m_BuildSettings:
     serializedVersion: 2
     agentTypeID: 0
-    agentRadius: 0.5
+    agentRadius: 0.75
     agentHeight: 2
     agentSlope: 45
     agentClimb: 0.4
@@ -114,7 +114,7 @@ NavMeshSettings:
     maxJumpAcrossDistance: 0
     minRegionArea: 2
     manualCellSize: 0
-    cellSize: 0.16666667
+    cellSize: 0.25
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
@@ -144,7 +144,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4486421689312453833, guid: 397ae170cfab15f4e9abb1d7f370ae62, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.13
+      value: 2.72
       objectReference: {fileID: 0}
     - target: {fileID: 4486421689312453833, guid: 397ae170cfab15f4e9abb1d7f370ae62, type: 3}
       propertyPath: m_LocalPosition.y
@@ -152,7 +152,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4486421689312453833, guid: 397ae170cfab15f4e9abb1d7f370ae62, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.35
+      value: -1.09
       objectReference: {fileID: 0}
     - target: {fileID: 4486421689312453833, guid: 397ae170cfab15f4e9abb1d7f370ae62, type: 3}
       propertyPath: m_LocalRotation.w
@@ -309,7 +309,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8272943599223628453, guid: 47b41978aba272c47ae5f4a2f7179c61, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.58
+      value: 0.28
       objectReference: {fileID: 0}
     - target: {fileID: 8272943599223628453, guid: 47b41978aba272c47ae5f4a2f7179c61, type: 3}
       propertyPath: m_LocalPosition.y
@@ -464,7 +464,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8272943599223628453, guid: 47b41978aba272c47ae5f4a2f7179c61, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.26
+      value: 4.56
       objectReference: {fileID: 0}
     - target: {fileID: 8272943599223628453, guid: 47b41978aba272c47ae5f4a2f7179c61, type: 3}
       propertyPath: m_LocalPosition.y
@@ -961,6 +961,10 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 126
       objectReference: {fileID: 0}
+    - target: {fileID: 4486421689312453832, guid: 397ae170cfab15f4e9abb1d7f370ae62, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300182, guid: 4e15996ba1e2f4b4392985ef6ac6b27c, type: 3}
     - target: {fileID: 4486421689312453833, guid: 397ae170cfab15f4e9abb1d7f370ae62, type: 3}
       propertyPath: m_RootOrder
       value: 3

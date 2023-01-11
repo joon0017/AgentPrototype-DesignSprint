@@ -28,7 +28,13 @@ public class Path : MonoBehaviour
             target=GameObject.FindWithTag("Target").transform;
             n.destination = new Vector3(target.position.x,target.position.y,target.position.z);
             animator.SetBool("isRun",canMove);
+            if(Vector3.Distance(target.position,transform.position)<2){
+            animator.SetBool("isAttack",true);
+            }
+            else animator.SetBool("isAttack",false);
         }
         else animator.SetBool("isRun",canMove);
+        //if the distance between target and the character is less than 2
+        
     }
 }
