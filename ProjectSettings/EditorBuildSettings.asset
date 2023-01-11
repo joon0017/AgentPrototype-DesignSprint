@@ -4,5 +4,38 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/MainPage.unity
+    guid: 236474a7c1c83934ab88a85cd77afe05
+  - enabled: 1
+    path: Assets/Scenes/ExFight.unity
+    guid: ff8fa11a09fbb834fad3f14643b67b53
+  - enabled: 1
+    path: Assets/Scenes/Fight.unity
+    guid: 40a3dbe816b8d8e4cb3f35e647b6999e
+  - enabled: 1
+    path: Assets/Scenes/LearningFinish.unity
+    guid: 4055120a58e47524394e3797791ca56c
+  - enabled: 1
+    path: Assets/Scenes/SelectChar.unity
+    guid: c0bc2849a68402f42b91273cd38f2470
+  - enabled: 1
+    path: Assets/Kiyoun/TrainFight.unity
+    guid: bbe7c5aac13b9254880e7fb0412c62b6
+  - enabled: 1
+    path: Assets/Kiyoun/FailFight.unity
+    guid: 0182e6196e4171d46b7fe214c905d7a3
+  - enabled: 1
+    path: Assets/Scenes/TradePage.unity
+    guid: 792c0e7c8bd9de148919f13e94b0e479
+  - enabled: 1
+    path: Assets/Scenes/Training.unity
+    guid: 1648e9f9bbdc90d499924772df83db2f
+  - enabled: 1
+    path: Assets/Scenes/GameStart.unity
+    guid: 2617db644502ec7419dbeed6b8a5f68f
   m_configObjects: {}
