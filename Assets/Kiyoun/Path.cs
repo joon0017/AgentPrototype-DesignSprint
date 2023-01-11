@@ -27,14 +27,21 @@ public class Path : MonoBehaviour
         if(canMove){
             target=GameObject.FindWithTag("Target").transform;
             n.destination = new Vector3(target.position.x,target.position.y,target.position.z);
-            animator.SetBool("isRun",canMove);
+            animator.SetBool("isRun",true);
             if(Vector3.Distance(target.position,transform.position)<2){
             animator.SetBool("isAttack",true);
             }
             else animator.SetBool("isAttack",false);
         }
-        else animator.SetBool("isRun",canMove);
+        else animator.SetBool("isRun",false);
         //if the distance between target and the character is less than 2
-        
+    }
+    void OnTriggerEnter(Collider c){
+        if(c.gameObject.name=="Trap"){
+            animator.SetBool("isDeath",true);
+            n.isStopped=true;
+            Debug.Log("Dead");
+        }
+
     }
 }
