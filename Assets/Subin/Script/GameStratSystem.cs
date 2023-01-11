@@ -6,6 +6,6 @@ using UnityEngine.SceneManagement;
 public class GameStratSystem : MonoBehaviour
 {
 public void StartGame(){
-        SceneManager.LoadScene("MainPage");
+        SceneManager.LoadScene("SelectChar");
     }
 }
