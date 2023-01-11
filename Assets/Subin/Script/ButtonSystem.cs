@@ -3,45 +3,36 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class ButtonSystem : MonoBehaviour
 {
     public TMP_Text countText;
     private int count;
-    private bool isState;
 
     private void Start()
     {
         count = 0;
         UpdateCountText();
-        isState = true;
     }
 
     public void Increase()
     {
-        count++;
+        count = count + 1;
         UpdateCountText();
+        Debug.Log("hi" + count);
     }
 
     public void Decrease()
     {
-        count--;
+        count = count - 1;
         UpdateCountText();
-    }
-
-    public void IncreaseState()
-    {
-        isState = true;
-    }
-
-    public void DecreaseState()
-    {
-        isState = false;
     }
 
     public void UpdateCountText()
     {
         countText.text = count.ToString();
+        Debug.Log(countText.text + " " + count.ToString());
     }
 
     public void MoveFight()
