@@ -7,6 +7,7 @@ public class Path : MonoBehaviour
 {
    // [SerializeField] private 
     Transform target;
+    [SerializeField] private GameObject attackArea;
     private NavMeshAgent n;
     // Start is called before the first frame update
     void Start()
@@ -20,7 +21,8 @@ public class Path : MonoBehaviour
     {
         target=GameObject.FindWithTag("Target").transform;
         if(target!=null){
-            n.destination = target.position;
+            n.destination = new Vector3(target.position.x,target.position.y,target.position.z);
+            
         }
     }
 }

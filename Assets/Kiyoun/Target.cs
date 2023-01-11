@@ -16,7 +16,7 @@ public class Target : MonoBehaviour
         
     }
     void OnTriggerEnter(Collider c){
-        if(c.gameObject.tag=="Player"){
+        if(c.gameObject.name=="AttackArea"){
             Destroy(gameObject);
         }
     }
