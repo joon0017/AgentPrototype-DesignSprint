@@ -14,8 +14,10 @@ public class ButtonSystem : MonoBehaviour
     private void FixedStart()
     {
         count = 0;
-        isLearn = false;
         UpdateCountText();
+    }
+    public void setIsLearn(bool tf){
+        this.isLearn = tf;
     }
 
     public void Increase()
@@ -46,12 +48,6 @@ public class ButtonSystem : MonoBehaviour
         if(isLearn == true){
             SceneManager.LoadScene("TrainFight");
         }
-    }
-
-    public void MoveLearning()
-    {
-        isLearn = true;
-        SceneManager.LoadScene("LearningPage");
     }
 }
 

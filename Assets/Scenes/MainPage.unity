@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17412741, g: 0.21774629, b: 0.29994258, a: 1}
+  m_IndirectSpecularColor: {r: 0.17412764, g: 0.21774673, b: 0.29994333, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2701,9 +2701,10 @@ GameObject:
   - component: {fileID: 647543320}
   - component: {fileID: 647543319}
   - component: {fileID: 647543318}
+  - component: {fileID: 647543321}
   m_Layer: 5
   m_Name: Fight
-  m_TagString: Untagged
+  m_TagString: Finish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2773,9 +2774,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1006398667}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ButtonSystem, Assembly-CSharp
-        m_MethodName: MoveFight
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2784,7 +2785,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 0
 --- !u!114 &647543319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2823,6 +2824,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 647543315}
   m_CullTransparentMesh: 1
+--- !u!114 &647543321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 647543315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b92c32c00d9fd341bfb2f514d97b70f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SceneName: FailFight
+  isLearn: 0
 --- !u!1 &671780996
 GameObject:
   m_ObjectHideFlags: 0
@@ -3124,7 +3139,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 709944090}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f5678b8bcd8f933489ce54244909e622, type: 3}
   m_Name: 
@@ -3136,7 +3151,7 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 709944090}
-  m_Enabled: 1
+  m_Enabled: 0
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 3.5
@@ -6829,7 +6844,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400042, guid: 233d700fbff0a468c8d9c7df54cc0901, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 2.08
       objectReference: {fileID: 0}
     - target: {fileID: 400042, guid: 233d700fbff0a468c8d9c7df54cc0901, type: 3}
       propertyPath: m_LocalPosition.y
@@ -6837,7 +6852,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400042, guid: 233d700fbff0a468c8d9c7df54cc0901, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -6.47
+      value: -3.9
       objectReference: {fileID: 0}
     - target: {fileID: 400042, guid: 233d700fbff0a468c8d9c7df54cc0901, type: 3}
       propertyPath: m_LocalRotation.w
@@ -7808,6 +7823,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1574446290}
   m_CullTransparentMesh: 1
+--- !u!1 &1608547558
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1608547559}
+  - component: {fileID: 1608547560}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: NoDestroy
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1608547559
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1608547558}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 930.5534, y: 527.48816, z: 5.55241}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1608547560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1608547558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62a2dc3586a6fcd44b7aa0ebc00793c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isLearn: 0
+  tgt: {fileID: 647543315}
 --- !u!1 &1621146484 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1880776661035598, guid: 390c3e301d761084694df43e15a0d9bb, type: 3}
@@ -9688,6 +9749,7 @@ GameObject:
   - component: {fileID: 2074973994}
   - component: {fileID: 2074973993}
   - component: {fileID: 2074973992}
+  - component: {fileID: 2074973995}
   m_Layer: 5
   m_Name: Learning
   m_TagString: Untagged
@@ -9760,9 +9822,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1006398667}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ButtonSystem, Assembly-CSharp
-        m_MethodName: MoveLearning
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9771,7 +9833,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 0
 --- !u!114 &2074973993
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9810,6 +9872,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2074973989}
   m_CullTransparentMesh: 1
+--- !u!114 &2074973995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2074973989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b92c32c00d9fd341bfb2f514d97b70f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SceneName: Training
+  isLearn: 0
 --- !u!1 &2110792546
 GameObject:
   m_ObjectHideFlags: 0

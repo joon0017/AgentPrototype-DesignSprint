@@ -8,6 +8,7 @@ TagManager:
   - DEAD_ZONE
   - TARGET
   - Trap
+  - NoDestroy
   layers:
   - Default
   - TransparentFX

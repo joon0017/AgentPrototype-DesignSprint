@@ -227,7 +227,7 @@ PrefabInstance:
     - target: {fileID: 7727522041942656935, guid: 28b1b096679ed3d4e92c43a4a22bef34, type: 3}
       propertyPath: m_Model
       value: 
-      objectReference: {fileID: 5022602860645237092, guid: 33fc98fa31d5d9e45abb523e5f642c97, type: 3}
+      objectReference: {fileID: 5022602860645237092, guid: c4c4fe0e55088fe418ffa36eedab825b, type: 3}
     - target: {fileID: 7727522042466580336, guid: 28b1b096679ed3d4e92c43a4a22bef34, type: 3}
       propertyPath: m_Name
       value: Stage
