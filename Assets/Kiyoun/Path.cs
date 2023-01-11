@@ -7,29 +7,28 @@ public class Path : MonoBehaviour
 {
    // [SerializeField] private 
     Transform target;
-    [SerializeField] private GameObject attackArea;
+    Animator animator;
     private NavMeshAgent n;
-    bool canMove;
+    int i;
+    bool canMove=true;
     // Start is called before the first frame update
     void Start()
-    {
+    {  
         n=GetComponent<NavMeshAgent>();
+        animator=GetComponent<Animator>();
         target=GameObject.FindWithTag("Target").transform;
     }
 
     // Update is called once per frame
     void Update()
     {
-        target=GameObject.FindWithTag("Target").transform;
-        if(target!=null){
-            Debug.Log(target.gameObject.tag);
-            canMove=true;
-        }
-        else if(target==null) {
-            canMove=false;
-        }
+        i=GameObject.FindGameObjectsWithTag("Target").Length;
+        if(i==0) canMove=false;
         if(canMove){
+            target=GameObject.FindWithTag("Target").transform;
             n.destination = new Vector3(target.position.x,target.position.y,target.position.z);
+            animator.SetBool("isRun",canMove);
         }
+        else animator.SetBool("isRun",canMove);
     }
 }
