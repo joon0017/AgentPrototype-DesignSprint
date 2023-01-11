@@ -12,11 +12,11 @@ public class CameraMove : MonoBehaviour
         //camera move code with WASD
         if (Input.GetKey(KeyCode.W))
         {
-            transform.Translate(Vector3.forward * Time.deltaTime * 10);
+            transform.Translate(Vector3.up * Time.deltaTime * 10);
         }
         if (Input.GetKey(KeyCode.S))
         {
-            transform.Translate(Vector3.back * Time.deltaTime * 10);
+            transform.Translate(Vector3.down * Time.deltaTime * 10);
         }
         if (Input.GetKey(KeyCode.A))
         {

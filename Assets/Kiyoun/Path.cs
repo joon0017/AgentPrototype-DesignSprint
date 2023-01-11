@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public class Path : MonoBehaviour
 {
@@ -36,11 +37,13 @@ public class Path : MonoBehaviour
         else animator.SetBool("isRun",false);
         //if the distance between target and the character is less than 2
     }
+    
     void OnTriggerEnter(Collider c){
         if(c.gameObject.name=="Trap"){
             animator.SetBool("isDeath",true);
             n.isStopped=true;
             Debug.Log("Dead");
+            SceneManager.LoadScene("MainPage");
         }
 
     }

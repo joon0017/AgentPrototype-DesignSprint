@@ -9,10 +9,12 @@ public class ButtonSystem : MonoBehaviour
 {
     public TMP_Text countText;
     private int count;
+    private bool isLearn;
 
-    private void Start()
+    private void FixedStart()
     {
         count = 0;
+        isLearn = false;
         UpdateCountText();
     }
 
@@ -37,13 +39,19 @@ public class ButtonSystem : MonoBehaviour
 
     public void MoveFight()
     {
-        //Move to fight scene
-        SceneManager.LoadScene("Fight");
+        if(isLearn == false){
+            SceneManager.LoadScene("FailFight");
+        }
+
+        if(isLearn == true){
+            SceneManager.LoadScene("TrainFight");
+        }
     }
+
     public void MoveLearning()
     {
-        //Move to LearningFinish scene
-        SceneManager.LoadScene("LearningFinish");
+        isLearn = true;
+        SceneManager.LoadScene("LearningPage");
     }
 }
 
