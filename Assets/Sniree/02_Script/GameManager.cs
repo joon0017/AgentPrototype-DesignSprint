@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public bool isLearn;
     public GameObject tgt;
+
     void Awake()
     {
         if (instance == null)
