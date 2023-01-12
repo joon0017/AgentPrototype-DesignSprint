@@ -39,7 +39,7 @@ public class Path : MonoBehaviour
     }
     
     void OnTriggerEnter(Collider c){
-        if(c.gameObject.name=="Trap"){
+        if(c.gameObject.tag=="Trap"){
             animator.SetBool("isDeath",true);
             n.isStopped=true;
             Debug.Log("Dead");
