@@ -8,8 +8,10 @@ using UnityEngine.EventSystems;
 public class ButtonSystem : MonoBehaviour
 {
     public TMP_Text countText;
+    public TMP_Text statsText;
     private int count;
     private bool isLearn;
+    public static int stats = 10;
 
     private void FixedStart()
     {
@@ -22,21 +24,39 @@ public class ButtonSystem : MonoBehaviour
 
     public void Increase()
     {
-        count = count + 1;
+        if(stats <= 0){
+            return;
+        }
+        if(stats <= 10)
+        {
+            stats = stats - 1;
+            count = count + 1;
         UpdateCountText();
-        Debug.Log("hi" + count);
+        }
+        else UpdateCountText();
+
     }
 
     public void Decrease()
     {
-        count = count - 1;
+        if(count <= 0){
+            return;
+        }
+        if(stats <= 10)
+        {
+            stats = stats + 1;
+            count = count - 1;
         UpdateCountText();
+        }
+        else UpdateCountText();
     }
 
     public void UpdateCountText()
     {
         countText.text = count.ToString();
         Debug.Log(countText.text + " " + count.ToString());
+        statsText.text = stats.ToString();
+        Debug.Log(statsText.text + " " + stats.ToString());
     }
 
     public void MoveFight()
