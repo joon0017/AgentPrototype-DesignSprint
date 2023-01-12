@@ -14,7 +14,7 @@ public class TrainSceneChanger : MonoBehaviour
 
     IEnumerator ChangeScene()
     {
-        yield return new WaitForSeconds(22f);
+        yield return new WaitForSeconds(8f);
         SceneManager.LoadScene("LearningFinish");
     }
 }
