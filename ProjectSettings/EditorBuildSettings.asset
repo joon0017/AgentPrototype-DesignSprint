@@ -24,10 +24,10 @@ EditorBuildSettings:
     path: Assets/Scenes/SelectChar.unity
     guid: c0bc2849a68402f42b91273cd38f2470
   - enabled: 1
-    path: Assets/Kiyoun/TrainFight.unity
+    path: Assets/Kiyoun/DesignSprint/TrainFight.unity
     guid: bbe7c5aac13b9254880e7fb0412c62b6
   - enabled: 1
-    path: Assets/Kiyoun/FailFight.unity
+    path: Assets/Kiyoun/DesignSprint/FailFight.unity
     guid: 0182e6196e4171d46b7fe214c905d7a3
   - enabled: 1
     path: Assets/Scenes/TradePage.unity
