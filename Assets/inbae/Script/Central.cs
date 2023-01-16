@@ -5,8 +5,10 @@ using UnityEngine;
 public class Central : MonoBehaviour
 {
     public Transform ivisibleIcon;
+    public GameObject gilbertUI;
     List<Arranger> arrangers;
     Arranger workArranger;
+    Arranger endArranger;
     int originIdx;
 
     void Start()
@@ -104,6 +106,12 @@ public class Central : MonoBehaviour
 
     void EndDrag(Transform icon)
     {
+        endArranger = arrangers.Find(t => ContainPos(t.transform as RectTransform, icon.position));
+        if(icon.name == "Character1" && endArranger.name == "Layout1")
+        {
+            gilbertUI.GetComponent<RectTransform>().anchoredPosition = new Vector2(-640, 180);
+        }
+
         if(ivisibleIcon.parent == transform)
         {
             workArranger.InsertIcon(icon, originIdx);

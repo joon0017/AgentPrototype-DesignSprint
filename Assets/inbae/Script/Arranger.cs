@@ -62,4 +62,13 @@ public class Arranger : MonoBehaviour
         icon.SetSiblingIndex(index);
         UpdateChildren();
     }
+
+    //public void OnTriggerEnter2D(Collider2D other)
+    //{
+    //    if(other.name == "Character1" && this.name == "Layout1")
+    //    {
+    //        Debug.Log("길버트 ON");
+    //        gilbertUI.GetComponent<RectTransform>().anchoredPosition = new Vector2(-640, 180);
+    //    }
+    //}
 }
