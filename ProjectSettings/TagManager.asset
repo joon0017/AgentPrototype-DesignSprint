@@ -9,6 +9,7 @@ TagManager:
   - TARGET
   - Trap
   - NoDestroy
+  - Weapon
   layers:
   - Default
   - TransparentFX

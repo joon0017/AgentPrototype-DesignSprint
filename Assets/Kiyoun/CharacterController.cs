@@ -8,6 +8,8 @@ public class CharacterController : MonoBehaviour
     float hAxis;
     float vAxis;
     bool canMove=true;
+
+    public BoxCollider attackArea;
     Vector3 moveVec;
     Animator anim;
     // Start is called before the first frame update
@@ -32,10 +34,14 @@ public class CharacterController : MonoBehaviour
             anim.SetTrigger("Attack");
         }
     }
-    public void StopMove(){
+    public void AttackStart(){
         canMove=false;
     }
-    public void StartMove(){
+    public void Damage(){
+        attackArea.enabled=true;
+    }
+    public void AttackEnd(){
         canMove=true;
+        attackArea.enabled=false;
     }
 }
