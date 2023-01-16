@@ -24,6 +24,6 @@ public class CharacterController : MonoBehaviour
         moveVec = new Vector3(hAxis,0,vAxis).normalized;
         transform.position += moveVec * speed * Time.deltaTime;
         transform.LookAt(transform.position + moveVec);
-        //anim.SetBool("Moving",moveVec != Vector3.zero);
+        anim.SetBool("Moving",moveVec != Vector3.zero);
     }
 }
