@@ -50,4 +50,7 @@ public class CharacterController : MonoBehaviour
         canAttack = true;
         attackArea.enabled=false;
     }
+    public void onCollisionExit(Collision c){
+        moveVec = Vector3.zero;
+    }
 }
