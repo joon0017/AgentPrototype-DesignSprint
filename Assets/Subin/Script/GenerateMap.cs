@@ -16,7 +16,7 @@ public class GenerateMap : MonoBehaviour
         Initialize(EnemyNum);
     }
 
-    void Start()
+    public void Spawn()
     {
         for(int i=0; i<EnemyNum; i++)
         {
