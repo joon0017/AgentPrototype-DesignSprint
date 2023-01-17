@@ -38,14 +38,14 @@ public class CharacterController : MonoBehaviour
             anim.SetTrigger("Attack");
         }
     }
-    public void AttackStart(){
+    public virtual void AttackStart(){
         canMove=false;
         canAttack=false;
     }
-    public void Damage(){
+    public virtual void Damage(){
         attackArea.enabled=true;
     }
-    public void AttackEnd(){
+    public virtual void AttackEnd(){
         canMove = true;
         canAttack = true;
         attackArea.enabled=false;
