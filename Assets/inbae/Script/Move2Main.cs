@@ -30,6 +30,6 @@ public class Move2Main : MonoBehaviour
         GameManager gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         gameManager.selectedCharacter = selectedChar;
             
-        SceneManager.LoadScene("MainPage");
+        SceneManager.LoadScene("Fight");
     }
 }
