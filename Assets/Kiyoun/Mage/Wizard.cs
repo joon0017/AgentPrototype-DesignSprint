@@ -10,10 +10,12 @@ public class Wizard : CharacterController
     Ray ray2;
     Ray ray3;
     Vector3 rayDirection;
-    float rayDistance = 5f;
-    float raySpread = 10f;
+    public float rayDistance = 5f;
+    float temp = 0;
+    public float raySpread = 10f;
     Quaternion spreadRotation;
     Vector3 spreadDirection;
+    Vector3 origin;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,13 +25,13 @@ public class Wizard : CharacterController
     // Update is called once per frame
     void Update()
     {
-        spellSpawn=new Vector3(transform.position.x, transform.position.y, transform.position.z);
+        //spellSpawn=new Vector3(transform.position.x, transform.position.y, transform.position.z);
         Game();
         RaycastHit hit;
         //Ray ray = new Ray(new Vector3(transform.position.x,transform.position.y+1f,transform.position.z), Vector3.forward);
         rayDirection = transform.forward;
         
-        Vector3 origin = transform.position + new Vector3(0, 1, 0);
+        origin = transform.position + new Vector3(0, 1, 0);
         // ray 1
         ray1 = new Ray(origin, rayDirection);
         Debug.DrawRay(ray1.origin, ray1.direction * rayDistance, Color.red);
@@ -46,27 +48,30 @@ public class Wizard : CharacterController
         ray3 = new Ray(origin, spreadDirection);
         Debug.DrawRay(ray3.origin, ray3.direction * rayDistance, Color.blue);
 
-        if(Physics.Raycast(ray1, out hit, 5)||Physics.Raycast(ray2, out hit, 5)||Physics.Raycast(ray3, out hit, 5)){
+        if(Physics.Raycast(ray1, out hit, rayDistance)||Physics.Raycast(ray2, out hit, rayDistance)||Physics.Raycast(ray3, out hit, rayDistance)){
             if(hit.collider.tag == "Target"){
                 canAttack=true;
-                spellSpawn = new Vector3(hit.collider.transform.position.x, hit.collider.transform.position.y+1f, hit.collider.transform.position.z);
-            }
+                spellSpawn = new Vector3(hit.collider.transform.position.x, hit.collider.transform.position.y, hit.collider.transform.position.z);
+            }   
         }
-        else canAttack=false;
+        else {
+            canAttack=false;
+        }
+        
     }
     public override void AttackStart(){
         canMove=false;
         canAttack=false;
-        rayDistance=0;
+        //swap rayDistance and temp
+        (rayDistance, temp) = (temp, rayDistance);
     }
     public override void Damage(){
-        if(spellSpawn != transform.position){
-            Instantiate(spell, spellSpawn, transform.rotation);
-        }
+        Instantiate(spell, spellSpawn, transform.rotation);
+        
     }
     public override void AttackEnd(){
         canMove = true;
         canAttack = true;
-        rayDistance=5f;
+        (rayDistance, temp) = (temp, rayDistance);
     }
 }
