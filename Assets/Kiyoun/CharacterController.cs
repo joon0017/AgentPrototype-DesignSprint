@@ -6,21 +6,25 @@ public class CharacterController : MonoBehaviour
 {
     public float speed;
     public float hAxis;
-    float vAxis;
-    bool canMove=true;
+    public float vAxis;
+    public bool canMove = true;
+    public bool canAttack = true;
 
     public BoxCollider attackArea;
-    Vector3 moveVec;
-    Animator anim;
+    public Vector3 moveVec;
+    public Animator anim;
     // Start is called before the first frame update
     void Start()
     {
-        anim = GetComponentInChildren<Animator>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        
+    }
+    public void Game(){
         if(canMove){
             hAxis = Input.GetAxisRaw("Horizontal");    
             vAxis = Input.GetAxisRaw("Vertical");
@@ -29,19 +33,21 @@ public class CharacterController : MonoBehaviour
             transform.LookAt(transform.position + moveVec);
             anim.SetBool("Moving",moveVec != Vector3.zero);
         }
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetKeyDown(KeyCode.Space)&&canAttack)
         {
             anim.SetTrigger("Attack");
         }
     }
     public void AttackStart(){
         canMove=false;
+        canAttack=false;
     }
     public void Damage(){
         attackArea.enabled=true;
     }
     public void AttackEnd(){
-        canMove=true;
+        canMove = true;
+        canAttack = true;
         attackArea.enabled=false;
     }
 }
