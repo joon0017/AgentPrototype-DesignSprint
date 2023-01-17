@@ -76,15 +76,15 @@ public class Central : MonoBehaviour
 
         Image buttonImage;
 
-        if(icon.name == "Character1" && workArranger.name == "Layout1")
+        if(icon.name == "Gilbert" && workArranger.name == "Layout1")
         {
             gilbertUI.GetComponent<RectTransform>().anchoredPosition = new Vector2(1280, 180);
         }
-        else if(icon.name == "Character1" && workArranger.name == "Layout2")
+        else if(icon.name == "Gilbert" && workArranger.name == "Layout2")
         {
             gilbertUI.GetComponent<RectTransform>().anchoredPosition = new Vector2(1280, 180);
         }
-        else if(icon.name == "Character1" && workArranger.name == "Layout3")
+        else if(icon.name == "Gilbert" && workArranger.name == "Layout3")
         {
             gilbertUI.GetComponent<RectTransform>().anchoredPosition = new Vector2(1280, 180);
         }
@@ -152,8 +152,8 @@ public class Central : MonoBehaviour
     void EndDrag(Transform icon)
     {
         endArranger = arrangers.Find(t => ContainPos(t.transform as RectTransform, icon.position));
-        string currName = icon.name + "Name";
 
+        string currName = icon.name + "Name";
         GameObject imageName = GameObject.Find(currName);
         Text imageText = imageName.GetComponent<Text>();
 
@@ -180,19 +180,19 @@ public class Central : MonoBehaviour
             buttonImage.enabled = false;
         }
 
-        if(icon.name == "Character1" && endArranger.name == "Layout1")
+        if(icon.name == "Gilbert" && endArranger.name == "Layout1")
         {
             gilbertUI.GetComponent<RectTransform>().anchoredPosition = new Vector2(-640, 180);
             imageText.enabled = false;
             iconImage.color = noneColor;
         }
-        else if(icon.name == "Character1" && endArranger.name == "Layout2")
+        else if(icon.name == "Gilbert" && endArranger.name == "Layout2")
         {
             gilbertUI.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 180);
             imageText.enabled = false;
             iconImage.color = noneColor;
         }
-        else if(icon.name == "Character1" && endArranger.name == "Layout3")
+        else if(icon.name == "Gilbert" && endArranger.name == "Layout3")
         {
             gilbertUI.GetComponent<RectTransform>().anchoredPosition = new Vector2(640, 180);
             imageText.enabled = false;
