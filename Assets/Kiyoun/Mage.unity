@@ -1539,6 +1539,7 @@ GameObject:
   - component: {fileID: 919132148180547161}
   - component: {fileID: 919132148180547163}
   - component: {fileID: 919132148180547164}
+  - component: {fileID: 919132148180547165}
   m_Layer: 0
   m_Name: Mage
   m_TagString: Untagged
@@ -1596,6 +1597,28 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &919132148180547165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148180547159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e31eab1814434694b88decdbd65e317e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 3
+  hAxis: 0
+  vAxis: 0
+  canMove: 1
+  canAttack: 1
+  attackArea: {fileID: 0}
+  moveVec: {x: 0, y: 0, z: 0}
+  anim: {fileID: 919132148180547163}
+  spell: {fileID: 2652020100590717145, guid: 21d0948179b51cd4cbef11cb10bdc19c, type: 3}
+  spellSpawn: {x: 0, y: 0, z: 0}
 --- !u!1 &919132148509599517
 GameObject:
   m_ObjectHideFlags: 0
@@ -3054,7 +3077,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7611045946550300528}
-  m_LocalRotation: {x: 0.00039533977, y: 0.055736158, z: 0.09984978, w: 0.99344015}
+  m_LocalRotation: {x: 0.0003953398, y: 0.055736158, z: 0.09984979, w: 0.99344015}
   m_LocalPosition: {x: -0.1715766, y: -0.034960784, z: 0.019497499}
   m_LocalScale: {x: 1, y: 1.0000001, z: 0.99999994}
   m_ConstrainProportionsScale: 0

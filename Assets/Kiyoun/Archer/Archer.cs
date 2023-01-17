@@ -17,7 +17,6 @@ public class Archer : CharacterController
         Game();
     }
     public override void Damage(){
-        //spawn arrow at attackArea
         Instantiate(arrow,attackArea.transform.position,attackArea.transform.rotation);
     }
     public override void AttackEnd(){
