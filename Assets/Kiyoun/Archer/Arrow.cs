@@ -18,11 +18,7 @@ public class Arrow : MonoBehaviour
         Destroy(gameObject, fly);
     }
     void OnTriggerEnter(Collider other){
-        if(other.gameObject.tag=="Target"){
-            Destroy(other.gameObject);
-            Destroy(gameObject);
-        }
-        else if(other.gameObject.tag!="Player"){
+        if(other.gameObject.tag!="Player"){
             Destroy(gameObject);
         }
     }
