@@ -3918,6 +3918,8 @@ GameObject:
   - component: {fileID: 4382794418659369304}
   - component: {fileID: 4382794418659369306}
   - component: {fileID: 4382794418659369307}
+  - component: {fileID: 4382794418659369309}
+  - component: {fileID: 4382794418659369308}
   m_Layer: 0
   m_Name: Thief
   m_TagString: Untagged
@@ -4243,6 +4245,36 @@ MonoBehaviour:
   attackArea: {fileID: 1036572897}
   moveVec: {x: 0, y: 0, z: 0}
   anim: {fileID: 4382794418659369306}
+--- !u!136 &4382794418659369308
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4006234313739860962}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 1
+  m_Height: 3
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
+--- !u!54 &4382794418659369309
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4006234313739860962}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!4 &4420665047170115198
 Transform:
   m_ObjectHideFlags: 0
@@ -4694,7 +4726,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -4108465024056037234, guid: 13fa19938366e3b47a5af9c299bfc8d3, type: 3}
+  - {fileID: 2100000, guid: 76ebb576ec1d04a41939056baebf3399, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9100,7 +9132,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -4108465024056037234, guid: 13fa19938366e3b47a5af9c299bfc8d3, type: 3}
+  - {fileID: 2100000, guid: 76ebb576ec1d04a41939056baebf3399, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

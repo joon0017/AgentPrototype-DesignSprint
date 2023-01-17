@@ -16,12 +16,11 @@ public class Archer : CharacterController
     {
         Game();
     }
-    void Damage(){
+    public override void Damage(){
         //spawn arrow at attackArea
         Instantiate(arrow,attackArea.transform.position,attackArea.transform.rotation);
-        Debug.Log("Fire");
     }
-    void AttackEnd(){
+    public override void AttackEnd(){
         canMove = true;
         canAttack = true;
     }
