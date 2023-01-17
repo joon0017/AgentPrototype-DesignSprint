@@ -40,4 +40,9 @@ public class Target1 : MonoBehaviour
 
         this.transform.position = new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10));
     }
+
+    public void OnDamage()
+    {
+        GenerateMap.ReturnObject(this);
+    }
 }
