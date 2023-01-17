@@ -13,7 +13,7 @@ public class GenerateMap : MonoBehaviour
     void Awake()
     {
         Instance = this;
-        Initialize(10);
+        Initialize(EnemyNum);
     }
 
     void Start()
@@ -21,7 +21,7 @@ public class GenerateMap : MonoBehaviour
         for(int i=0; i<EnemyNum; i++)
         {
             var obj = GetObject();
-            obj.transform.position = new Vector3(Random.Range(-12, 12), 0, Random.Range(-12, 12));
+            obj.transform.localPosition = new Vector3(Random.Range(-12, 12), transform.position.y, Random.Range(-12, 12));
         }
     }
 

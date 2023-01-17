@@ -38,6 +38,6 @@ public class Target1 : MonoBehaviour
             return;
         }
 
-        this.transform.position = new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10));
+        this.transform.position = new Vector3(Random.Range(-10, 10), transform.position.y, Random.Range(-10, 10));
     }
 }
