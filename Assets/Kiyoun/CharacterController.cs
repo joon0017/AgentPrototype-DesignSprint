@@ -5,7 +5,7 @@ using UnityEngine;
 public class CharacterController : MonoBehaviour
 {
     public float speed;
-    float hAxis;
+    public float hAxis;
     float vAxis;
     bool canMove=true;
 
