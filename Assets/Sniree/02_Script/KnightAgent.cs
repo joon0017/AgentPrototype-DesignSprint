@@ -21,6 +21,8 @@ public class KnightAgent : Agent
     //trap (obstacle)
     public GameObject[] traps;
     private Transform[] trapTrs;
+
+    public GameObject enemySpawner;
     
     public override void Initialize()
     {
@@ -32,6 +34,7 @@ public class KnightAgent : Agent
     }
 
     public override void OnEpisodeBegin(){
+        enemySpawner.GetComponent<GenerateMap>().Spawn();
         StartCoroutine(setTargets());
     }
 
