@@ -23,6 +23,10 @@ public class KnightAgent : Agent
     private Transform[] trapTrs;
 
     public GameObject enemySpawner;
+
+    public void SetRWD(float number){
+        SetReward(number);
+    }
     
     public override void Initialize()
     {
