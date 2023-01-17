@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -9,6 +10,13 @@ public class GameManager : MonoBehaviour
     public bool isLearn;
     public GameObject tgt;
     public string[] selectedCharacter;
+    public Text tutorial;
+    public GameObject tutorialPanel;
+    public TextManager TextManager;
+    public int strid;
+    public bool isClick;
+
+
     void Awake()
     {
         if (instance == null)
@@ -29,5 +37,22 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void click(int id){
+        tuto(id);
+        tutorialPanel.SetActive(isClick);
+    }
+
+    public void tuto(int id){
+        string txtData = TextManager.GetTxt(id, strid);
+        
+        if(txtData==null){
+            isClick=false;
+            strid =0;
+            return;
+        }
+        isClick=true;
+        tutorial.text = txtData;
+        strid++;
+    }
 
 }
