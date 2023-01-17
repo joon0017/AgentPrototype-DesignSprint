@@ -43,6 +43,7 @@ public class CharacterController : MonoBehaviour
         canMove=false;
         canAttack=false;
         this.gameObject.GetComponent<KnightAgent>().SetRWD(MissAttack);
+        this.gameObject.GetComponent<KnightAgent>().AttackNum++;
     }
     public virtual void Damage(){
         attackArea.enabled=true;

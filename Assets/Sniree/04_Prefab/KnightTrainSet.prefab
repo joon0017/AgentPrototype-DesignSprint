@@ -470,6 +470,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyNum: 20
   Enemy: {fileID: 818009665530389591, guid: 84afb28e5992ebf4cb9326c3c8b4830f, type: 3}
+  Agent: {fileID: 0}
 --- !u!1 &863233887999895602
 GameObject:
   m_ObjectHideFlags: 0
@@ -1570,6 +1571,7 @@ MonoBehaviour:
   vAxis: 0
   canMove: 1
   canAttack: 1
+  MissAttack: 0
   attackArea: {fileID: 2360515472478199570}
   moveVec: {x: 0, y: 0, z: 0}
   anim: {fileID: 2360515471628439972}
@@ -1619,6 +1621,7 @@ MonoBehaviour:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
   MaxStep: 1000
+  AttackNum: 0
   targets: []
   walls:
   - {fileID: 459414972750337348}
@@ -1649,7 +1652,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 8
+    VectorObservationSize: 128
     NumStackedVectorObservations: 1
     m_ActionSpec:
       m_NumContinuousActions: 3
@@ -1661,7 +1664,7 @@ MonoBehaviour:
   m_Model: {fileID: 0}
   m_InferenceDevice: 3
   m_BehaviorType: 0
-  m_BehaviorName: My Behavior
+  m_BehaviorName: Knight
   TeamId: 0
   m_UseChildSensors: 1
   m_UseChildActuators: 1
