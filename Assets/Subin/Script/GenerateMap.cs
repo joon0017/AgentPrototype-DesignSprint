@@ -21,7 +21,7 @@ public class GenerateMap : MonoBehaviour
         for(int i=0; i<EnemyNum; i++)
         {
             var obj = GetObject();
-            obj.transform.position = new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10));
+            obj.transform.position = new Vector3(Random.Range(-12, 12), 0, Random.Range(-12, 12));
         }
     }
 
