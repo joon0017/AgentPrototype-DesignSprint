@@ -26,6 +26,19 @@ public class KnightAgent : Agent
 
     public GameObject enemySpawner;
 
+
+    public float speed;
+    public bool canMove = true;
+    public bool canAttack = true;
+    public float MissAttack;
+
+    public BoxCollider attackArea;
+    public Vector3 moveVec;
+    public Animator anim;
+
+
+
+
     public void SetRWD(float number){
         SetReward(number);
     }
@@ -69,9 +82,20 @@ public class KnightAgent : Agent
 
     public override void OnActionReceived(ActionBuffers actions)
     {
+        if(canMove){
+            float h = Mathf.Clamp(actions.ContinuousActions[0], -1.0f, 1.0f);
+            float v = Mathf.Clamp(actions.ContinuousActions[1], -1.0f, 1.0f);
+            moveVec = new Vector3(h,0,v);
+            tr.position += moveVec * speed * Time.deltaTime;
+            tr.LookAt(tr.position + moveVec);
+            anim.SetBool("Moving",moveVec != Vector3.zero);
+        }
+        if(actions.ContinuousActions[2] == 1 && canAttack)
+        {
+            anim.SetTrigger("Attack");
+        }
         SetReward(-0.0001f);
     }
-
     public override void Heuristic(in ActionBuffers actionsOut)
     {
         ActionSegment<float> continuousActions = actionsOut.ContinuousActions;
@@ -81,6 +105,25 @@ public class KnightAgent : Agent
         // Debug.Log($"[0] = {continuousActions[0]} [1] = {continuousActions[1]} : [2] = {continuousActions[2]}");
     }
 
+    public void AttackStart(){
+        canMove=false;
+        canAttack=false;
+        SetReward(MissAttack);
+        AttackNum++;
+    }
+    public void Damage(){
+        attackArea.enabled=true;
+    }
+    public void AttackEnd(){
+        canMove = true;
+        canAttack = true;
+        attackArea.enabled=false;
+    }
+
+
+    public void onCollisionExit(Collision c){
+        moveVec = Vector3.zero;
+    }
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Wall"))
