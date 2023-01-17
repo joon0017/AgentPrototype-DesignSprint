@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028346, g: 0.22571373, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -128,6 +128,59 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8443575337174861556, guid: 16a762c62252b7e4dbd3c190febdbdde, type: 3}
   m_PrefabInstance: {fileID: 1127982062}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &479880266
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 479880268}
+  - component: {fileID: 479880267}
+  m_Layer: 0
+  m_Name: SpawnManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &479880267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 479880266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b8f070e65a46974f9d974c9ba4a98d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
+  charPrefabs:
+  - {fileID: 6581053675035918951, guid: ca6178868e27df74993661e5a035ff68, type: 3}
+  - {fileID: 4151913634272704924, guid: 08eb4c7e962deb5438c0a45e4c7a655d, type: 3}
+  - {fileID: 3095763797043153528, guid: 33215237599da1b48a7efd2bc166666a, type: 3}
+  - {fileID: 7200739954160121480, guid: 797c71938fca4ec4ba52058578ed3b96, type: 3}
+  spawn1: {fileID: 0}
+  spawn2: {fileID: 0}
+  spawn3: {fileID: 0}
+--- !u!4 &479880268
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 479880266}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.8680725, y: -13.200956, z: 17.784225}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &640255243
 GameObject:
   m_ObjectHideFlags: 0
@@ -548,6 +601,14 @@ PrefabInstance:
     - target: {fileID: 863233888564504569, guid: 16a762c62252b7e4dbd3c190febdbdde, type: 3}
       propertyPath: m_Name
       value: KnightTrainSet
+      objectReference: {fileID: 0}
+    - target: {fileID: 2360515471628439974, guid: 16a762c62252b7e4dbd3c190febdbdde, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -9.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2360515471628439974, guid: 16a762c62252b7e4dbd3c190febdbdde, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2360515471628439998, guid: 16a762c62252b7e4dbd3c190febdbdde, type: 3}
       propertyPath: m_Enabled
