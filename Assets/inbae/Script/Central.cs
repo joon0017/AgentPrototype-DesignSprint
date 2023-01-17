@@ -7,6 +7,7 @@ public class Central : MonoBehaviour
 {
     public Transform ivisibleIcon;
     public GameObject infoUI;
+    GameObject invisibleIcon;
     GameObject plusButton1;
     GameObject plusButton2;
     GameObject plusButton3;
@@ -20,6 +21,7 @@ public class Central : MonoBehaviour
         arrangers = new List<Arranger>();
 
         var arrs = transform.GetComponentsInChildren<Arranger>();
+        invisibleIcon = GameObject.Find("InvisibleIcon");
 
         for(int i=0; i<arrs.Length; i++)
         {
@@ -81,19 +83,19 @@ public class Central : MonoBehaviour
 
         if(workArranger.name == "Layout1")
         {
-            infoUI.GetComponent<RectTransform>().anchoredPosition = new Vector2(1280, 180);
+            infoUI.GetComponent<RectTransform>().anchoredPosition = new Vector2(4056, 180);
             buttonImage = plusButton1.GetComponent<Image>();
             buttonImage.enabled = true;
         }
         else if(workArranger.name == "Layout2")
         {
-            infoUI.GetComponent<RectTransform>().anchoredPosition = new Vector2(1280, 180);
+            infoUI.GetComponent<RectTransform>().anchoredPosition = new Vector2(4056, 180);
             buttonImage = plusButton2.GetComponent<Image>();
             buttonImage.enabled = true;
         }
         else if(workArranger.name == "Layout3")
         {
-            infoUI.GetComponent<RectTransform>().anchoredPosition = new Vector2(1280, 180);
+            infoUI.GetComponent<RectTransform>().anchoredPosition = new Vector2(4056, 180);
             buttonImage = plusButton3.GetComponent<Image>();
             buttonImage.enabled = true;
         }
@@ -161,7 +163,7 @@ public class Central : MonoBehaviour
         {
             buttonImage = plusButton1.GetComponent<Image>();
             buttonImage.enabled = false;
-            infoUI.GetComponent<RectTransform>().anchoredPosition = new Vector2(-640, 180);
+            infoUI.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -60);
             imageText.enabled = false;
             iconImage.color = noneColor;
         }
@@ -169,7 +171,7 @@ public class Central : MonoBehaviour
         {
             buttonImage = plusButton2.GetComponent<Image>();
             buttonImage.enabled = false;
-            infoUI.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 180);
+            infoUI.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -60);
             imageText.enabled = false;
             iconImage.color = noneColor;
         }
@@ -177,7 +179,7 @@ public class Central : MonoBehaviour
         {
             buttonImage = plusButton3.GetComponent<Image>();
             buttonImage.enabled = false;
-            infoUI.GetComponent<RectTransform>().anchoredPosition = new Vector2(640, 180);
+            infoUI.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -60);
             imageText.enabled = false;
             iconImage.color = noneColor;
         }
