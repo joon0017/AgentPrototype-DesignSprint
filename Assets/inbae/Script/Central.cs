@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Central : MonoBehaviour
 {
     public Transform ivisibleIcon;
-    public GameObject gilbertUI;
+    public GameObject infoUI;
     GameObject plusButton1;
     GameObject plusButton2;
     GameObject plusButton3;
@@ -76,31 +76,24 @@ public class Central : MonoBehaviour
 
         Image buttonImage;
 
-        if(icon.name == "Gilbert" && workArranger.name == "Layout1")
-        {
-            gilbertUI.GetComponent<RectTransform>().anchoredPosition = new Vector2(1280, 180);
-        }
-        else if(icon.name == "Gilbert" && workArranger.name == "Layout2")
-        {
-            gilbertUI.GetComponent<RectTransform>().anchoredPosition = new Vector2(1280, 180);
-        }
-        else if(icon.name == "Gilbert" && workArranger.name == "Layout3")
-        {
-            gilbertUI.GetComponent<RectTransform>().anchoredPosition = new Vector2(1280, 180);
-        }
+        string infoName = icon.name + "Info";
+        infoUI = GameObject.Find(infoName);
 
         if(workArranger.name == "Layout1")
         {
+            infoUI.GetComponent<RectTransform>().anchoredPosition = new Vector2(1280, 180);
             buttonImage = plusButton1.GetComponent<Image>();
             buttonImage.enabled = true;
         }
         else if(workArranger.name == "Layout2")
         {
+            infoUI.GetComponent<RectTransform>().anchoredPosition = new Vector2(1280, 180);
             buttonImage = plusButton2.GetComponent<Image>();
             buttonImage.enabled = true;
         }
         else if(workArranger.name == "Layout3")
         {
+            infoUI.GetComponent<RectTransform>().anchoredPosition = new Vector2(1280, 180);
             buttonImage = plusButton3.GetComponent<Image>();
             buttonImage.enabled = true;
         }
@@ -168,33 +161,23 @@ public class Central : MonoBehaviour
         {
             buttonImage = plusButton1.GetComponent<Image>();
             buttonImage.enabled = false;
+            infoUI.GetComponent<RectTransform>().anchoredPosition = new Vector2(-640, 180);
+            imageText.enabled = false;
+            iconImage.color = noneColor;
         }
         else if(endArranger.name == "Layout2")
         {
             buttonImage = plusButton2.GetComponent<Image>();
             buttonImage.enabled = false;
+            infoUI.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 180);
+            imageText.enabled = false;
+            iconImage.color = noneColor;
         }
         else if(endArranger.name == "Layout3")
         {
             buttonImage = plusButton3.GetComponent<Image>();
             buttonImage.enabled = false;
-        }
-
-        if(icon.name == "Gilbert" && endArranger.name == "Layout1")
-        {
-            gilbertUI.GetComponent<RectTransform>().anchoredPosition = new Vector2(-640, 180);
-            imageText.enabled = false;
-            iconImage.color = noneColor;
-        }
-        else if(icon.name == "Gilbert" && endArranger.name == "Layout2")
-        {
-            gilbertUI.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 180);
-            imageText.enabled = false;
-            iconImage.color = noneColor;
-        }
-        else if(icon.name == "Gilbert" && endArranger.name == "Layout3")
-        {
-            gilbertUI.GetComponent<RectTransform>().anchoredPosition = new Vector2(640, 180);
+            infoUI.GetComponent<RectTransform>().anchoredPosition = new Vector2(640, 180);
             imageText.enabled = false;
             iconImage.color = noneColor;
         }
