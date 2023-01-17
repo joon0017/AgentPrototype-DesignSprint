@@ -33,6 +33,7 @@ public class KnightAgent : Agent
         targetTrs = new Transform[targets.Length];
         wallTrs = new Transform[walls.Length];
         trapTrs = new Transform[traps.Length];
+        tr = GetComponent<Transform>();
         for (int i = 0; i < walls.Length; i++) wallTrs[i] = walls[i].GetComponent<Transform>();
         for (int i = 0; i < traps.Length; i++) trapTrs[i] = traps[i].GetComponent<Transform>();
     }

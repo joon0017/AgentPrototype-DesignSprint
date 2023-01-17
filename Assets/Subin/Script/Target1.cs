@@ -14,14 +14,21 @@ public class Target1 : MonoBehaviour
         
     }
 
-    void OnCollisionEnter(Collision coll)
+
+    void OnTriggerStay(Collider coll)
     {
-        if(coll.gameObject.tag=="AttackArea")
+        if(coll.gameObject.tag=="Weapon"){
             GenerateMap.ReturnObject(this);
+            //find coll.gameObject's parent and get reward
+            coll.gameObject.transform.parent.gameObject.GetComponent<KnightAgent>().SetRWD(0.1f);
+        }
     }
 
     void OnCollisionStay(Collision coll) { 
         // Debug.Log(coll.gameObject.name);
+
+        if(coll.gameObject.tag=="AttackArea")
+            OnDamage();
 
         if (coll.gameObject.CompareTag("Wall") || coll.gameObject.CompareTag("Trap")){
             this.transform.position = new Vector3(Random.Range(-10, 10), transform.position.y, Random.Range(-10, 10));

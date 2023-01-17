@@ -9,6 +9,7 @@ public class CharacterController : MonoBehaviour
     public float vAxis;
     public bool canMove = true;
     public bool canAttack = true;
+    public float MissAttack;
 
     public BoxCollider attackArea;
     public Vector3 moveVec;
@@ -41,6 +42,7 @@ public class CharacterController : MonoBehaviour
     public virtual void AttackStart(){
         canMove=false;
         canAttack=false;
+        this.gameObject.GetComponent<KnightAgent>().SetRWD(MissAttack);
     }
     public virtual void Damage(){
         attackArea.enabled=true;
