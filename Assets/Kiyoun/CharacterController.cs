@@ -42,8 +42,8 @@ public class CharacterController : MonoBehaviour
     public virtual void AttackStart(){
         canMove=false;
         canAttack=false;
-        this.gameObject.GetComponent<KnightAgent>().SetRWD(MissAttack);
-        this.gameObject.GetComponent<KnightAgent>().AttackNum++;
+        // this.gameObject.GetComponent<KnightAgent>().SetRWD(MissAttack);
+        // this.gameObject.GetComponent<KnightAgent>().AttackNum++;
     }
     public virtual void Damage(){
         attackArea.enabled=true;

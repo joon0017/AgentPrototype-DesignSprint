@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public TextManager TextManager;
     public int strid;
     public bool isClick;
+    public static int enemys;
 
 
     void Awake()
@@ -29,6 +30,13 @@ public class GameManager : MonoBehaviour
         }
         DontDestroyOnLoad(this.gameObject);
     }
+
+    void Start()
+    {
+        enemys = GenerateMaps.Instance.EnemyNum;
+        Debug.Log(enemys);
+    }
+
     private void Update() {
         if(isLearn){
             tgt = GameObject.FindGameObjectWithTag("Finish");
@@ -53,6 +61,15 @@ public class GameManager : MonoBehaviour
         isClick=true;
         tutorial.text = txtData;
         strid++;
+    }
+
+    public static void DcreaseEnemy(){
+        Debug.Log("Decrease");
+        enemys--;
+        Debug.Log(enemys);
+        if(enemys == 0){
+            SceneManager.LoadScene("MainPage");
+        }
     }
 
 }
