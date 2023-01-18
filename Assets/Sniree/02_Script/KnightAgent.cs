@@ -13,8 +13,9 @@ public class KnightAgent : Agent
     public int AttackNum;
 
     //enemies (target)
-    public GameObject[] targets;
-    private Transform[] targetTrs;
+    public int enemyNum;
+    public Transform[] targetTrs;
+    public GameObject killed;
     
     //wall (obstacle)
     public GameObject[] walls;
@@ -46,38 +47,45 @@ public class KnightAgent : Agent
     public override void Initialize()
     {
         AttackNum = 0;
-        targets = new GameObject[enemySpawner.GetComponent<GenerateMap>().EnemyNum];
-        targetTrs = new Transform[targets.Length];
         wallTrs = new Transform[walls.Length];
         trapTrs = new Transform[traps.Length];
         tr = GetComponent<Transform>();
         startPos = tr.localPosition;
         for (int i = 0; i < walls.Length; i++) wallTrs[i] = walls[i].GetComponent<Transform>();
         for (int i = 0; i < traps.Length; i++) trapTrs[i] = traps[i].GetComponent<Transform>();
-
-        enemySpawner.GetComponent<GenerateMap>().Agent = this.gameObject;
     }
 
     public override void OnEpisodeBegin(){
-        enemySpawner.GetComponent<GenerateMap>().Spawn();
+        AttackNum = 0;
+        foreach (Transform target in targetTrs)
+        {
+            Vector3 rndVec3 = new Vector3(Random.Range(-12, 12), 0.5f, Random.Range(-12, 12));
+            target.transform.localPosition = rndVec3 + enemySpawner.transform.localPosition;
+        }
         tr.localPosition = startPos;
 
-        StartCoroutine(setTargets());
+
     }
 
-    IEnumerator setTargets(){
-        //wait for all targets to find its position
-        yield return new WaitForSeconds(0.4f);
-        for (int i = 0; i < targets.Length; i++) targetTrs[i] = targets[i].GetComponent<Transform>();
-    }
 
     public override void CollectObservations(Unity.MLAgents.Sensors.VectorSensor sensor)
     {
-        foreach (Transform t in targetTrs) sensor.AddObservation(t.localPosition);
+
+        try
+        {
+            foreach (Transform t in targetTrs) {
+                if (killed == t.gameObject) continue;
+                sensor.AddObservation(t.localPosition);
+            }
         foreach (Transform t in wallTrs) sensor.AddObservation(t.localPosition);
         foreach (Transform t in trapTrs) sensor.AddObservation(t.localPosition);
         sensor.AddObservation(tr.localPosition);
         sensor.AddObservation(AttackNum);
+        }
+        catch (System.Exception)
+        {
+            throw;
+        }
     }
 
     public override void OnActionReceived(ActionBuffers actions)
@@ -90,9 +98,15 @@ public class KnightAgent : Agent
             tr.LookAt(tr.position + moveVec);
             anim.SetBool("Moving",moveVec != Vector3.zero);
         }
-        if(actions.ContinuousActions[2] == 1 && canAttack)
+        if(actions.DiscreteActions[0] == 1 && canAttack)
         {
             anim.SetTrigger("Attack");
+        }
+
+        if(AttackNum > 10)
+        {
+            SetReward(-1.0f);
+            EndEpisode();
         }
         SetReward(-0.0001f);
     }
@@ -101,8 +115,9 @@ public class KnightAgent : Agent
         ActionSegment<float> continuousActions = actionsOut.ContinuousActions;
         continuousActions[0] = Input.GetAxis("Horizontal");
         continuousActions[1] = Input.GetAxis("Vertical");
-        continuousActions[2] = Input.GetKey(KeyCode.Space) ? 1.0f : 0.0f;
-        // Debug.Log($"[0] = {continuousActions[0]} [1] = {continuousActions[1]} : [2] = {continuousActions[2]}");
+        ActionSegment<int> discreteActions = actionsOut.DiscreteActions;
+        discreteActions[0] = Input.GetKey(KeyCode.Space) ? 1 : 0;
+        // Debug.Log($"[0] = {continuousActions[0]} [1] = {continuousActions[1]} : [2] = {discreteActions[0]}");
     }
 
     public void AttackStart(){
@@ -135,5 +150,10 @@ public class KnightAgent : Agent
             SetReward(-1.0f);
             EndEpisode();
         }
+    }
+
+    public void killEnemy(){
+        SetReward(1.0f);
+        EndEpisode();
     }
 }

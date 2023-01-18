@@ -10,6 +10,7 @@ public class GenerateMap : MonoBehaviour
     public GameObject Agent;
     private GameObject[] spawnedEnemies;
     Queue<Target1> poolingObjectQueue = new Queue<Target1>();
+    private GameObject disabled;
 
     void Awake()
     {
@@ -18,29 +19,27 @@ public class GenerateMap : MonoBehaviour
         spawnedEnemies = new GameObject[EnemyNum];
     }
 
-    public void Spawn()
+    public GameObject[] Spawn()
     {
         //destroy existintg enemies
-        foreach(GameObject obj in spawnedEnemies)
-        {
-            if(obj) Destroy(obj);
-        }
+        // foreach(GameObject obj in spawnedEnemies) Destroy(obj);
 
         //spawn new enemies
         for(int i=0; i<EnemyNum; i++)
         {
             var obj = GetObject();
-            Vector3 rndVec3 = new Vector3(Random.Range(-12, 12), transform.position.y, Random.Range(-12, 12));
+            obj.Generator = this.gameObject;
+            Vector3 rndVec3 = new Vector3(Random.Range(-12, 12), 0.5f, Random.Range(-12, 12));
             obj.transform.localPosition = rndVec3 + transform.position;
             spawnedEnemies[i] = obj.gameObject;
         }
-
-        //set new enemies
-        for(int i=0; i<EnemyNum; i++)
-        {
-            Agent.GetComponent<KnightAgent>().targets[i] = spawnedEnemies[i];
-        }
+        return spawnedEnemies;
     }
+
+    // IEnumerator DestroyDelay(GameObject obj)
+    // {
+    //     yield return new WaitForSeconds(0.5f);
+    // }
 
     private void Initialize(int EnemyNum)
     {
@@ -77,10 +76,4 @@ public class GenerateMap : MonoBehaviour
         }
     }
 
-    public static void ReturnObject(Target1 obj)
-    {
-        obj.gameObject.SetActive(false);
-        obj.transform.SetParent(Instance.transform);
-        Instance.poolingObjectQueue.Enqueue(obj);
-    }
 }
