@@ -39,11 +39,12 @@ public class KnightAgent : Agent
 
 
 
-
+    //외부 객체에서 Reward를 설정할 수 있도록 해 줌
     public void SetRWD(float number){
         SetReward(number);
     }
     
+    //새로 생성 되었을 때 기존 값을 입력해줌
     public override void Initialize()
     {
         AttackNum = 0;
@@ -55,22 +56,28 @@ public class KnightAgent : Agent
         for (int i = 0; i < traps.Length; i++) trapTrs[i] = traps[i].GetComponent<Transform>();
     }
 
+    //에피소드 시작 시 한번 불러옴
     public override void OnEpisodeBegin(){
+        //공격 회수 초기화
         AttackNum = 0;
+
+        //적 위치 재배치
         foreach (Transform target in targetTrs)
         {
             Vector3 rndVec3 = new Vector3(Random.Range(-12, 12), 0.5f, Random.Range(-12, 12));
             target.transform.localPosition = rndVec3 + enemySpawner.transform.localPosition;
         }
+
+        //플레이어 위치 초기화
         tr.localPosition = startPos;
 
 
     }
 
 
+    //관측값 입력받음.
     public override void CollectObservations(Unity.MLAgents.Sensors.VectorSensor sensor)
     {
-
         try
         {
             foreach (Transform t in targetTrs) {
@@ -88,8 +95,15 @@ public class KnightAgent : Agent
         }
     }
 
+    //입력값을 받을 때 마다 실행됨
+    /*
+    대체적으로 움직임 관련 함수를 여기에 넣으면 됨.
+    Update()와 비슷한 기능을 함. (매 프레임마다 새로운 Action을 받기 때문)
+    Editor 상에 Max Step을 설정해주면, Max Step이 되면 자동으로 Episode가 끝나게 됨.
+    */
     public override void OnActionReceived(ActionBuffers actions)
     {
+
         if(canMove){
             float h = Mathf.Clamp(actions.ContinuousActions[0], -1.0f, 1.0f);
             float v = Mathf.Clamp(actions.ContinuousActions[1], -1.0f, 1.0f);
@@ -108,8 +122,12 @@ public class KnightAgent : Agent
             SetReward(-1.0f);
             EndEpisode();
         }
+
         SetReward(-0.0001f);
     }
+
+    //유저가 테스트를 하기 위해 사용됨. 입력 받는 값이 ActionBuffers에 저장됨으로, 외부 Script에서 움직임 관련 함수가 있으면 
+    //입력값이 넘어가지 않게 되어서 실행이 안됨.
     public override void Heuristic(in ActionBuffers actionsOut)
     {
         ActionSegment<float> continuousActions = actionsOut.ContinuousActions;
@@ -120,6 +138,7 @@ public class KnightAgent : Agent
         // Debug.Log($"[0] = {continuousActions[0]} [1] = {continuousActions[1]} : [2] = {discreteActions[0]}");
     }
 
+    //공격 애니메이션 관련 함수들.
     public void AttackStart(){
         canMove=false;
         canAttack=false;
