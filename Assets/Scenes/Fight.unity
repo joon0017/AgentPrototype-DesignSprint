@@ -161,7 +161,7 @@ MonoBehaviour:
   charPrefabs:
   - {fileID: 6581053675035918951, guid: ca6178868e27df74993661e5a035ff68, type: 3}
   - {fileID: 4151913634272704924, guid: 08eb4c7e962deb5438c0a45e4c7a655d, type: 3}
-  - {fileID: 3095763797043153528, guid: 33215237599da1b48a7efd2bc166666a, type: 3}
+  - {fileID: 3571561372350424818, guid: 33215237599da1b48a7efd2bc166666a, type: 3}
   - {fileID: 7200739954160121480, guid: 797c71938fca4ec4ba52058578ed3b96, type: 3}
   spawn1: {fileID: 0}
   spawn2: {fileID: 0}
