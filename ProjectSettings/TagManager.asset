@@ -12,6 +12,7 @@ TagManager:
   - Enemy
   - TARGET
   - DEAD_ZONE
+  - Magic
   layers:
   - Default
   - TransparentFX
