@@ -7,7 +7,7 @@ public class Central : MonoBehaviour
 {
     public Transform ivisibleIcon;
     public GameObject infoUI;
-    GameObject invisibleIcon;
+    Image invisibleImage;
     GameObject plusButton1;
     GameObject plusButton2;
     GameObject plusButton3;
@@ -21,7 +21,10 @@ public class Central : MonoBehaviour
         arrangers = new List<Arranger>();
 
         var arrs = transform.GetComponentsInChildren<Arranger>();
+
+        GameObject invisibleIcon;
         invisibleIcon = GameObject.Find("InvisibleIcon");
+        invisibleImage = invisibleIcon.GetComponent<Image>();
 
         for(int i=0; i<arrs.Length; i++)
         {
@@ -73,8 +76,10 @@ public class Central : MonoBehaviour
         GameObject thisIcon = GameObject.Find(icon.name);
         Image iconImage = thisIcon.GetComponent<Image>();
         var onColor = new Color(255/ 255f, 255/ 255f, 255/ 255f, 255/ 255f);
+        var invisibleColor = new Color(255/ 255f, 255/ 255f, 255/ 255f, 50/ 255f);
 
         iconImage.color = onColor;
+        invisibleImage.color = invisibleColor;
 
         Image buttonImage;
 
@@ -158,6 +163,8 @@ public class Central : MonoBehaviour
         var onColor = new Color(255/ 255f, 255/ 255f, 255/ 255f, 255/ 255f);
 
         Image buttonImage;
+
+        invisibleImage.color = noneColor;
 
         if(endArranger.name == "Layout1")
         {
