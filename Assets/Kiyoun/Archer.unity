@@ -1238,6 +1238,7 @@ MonoBehaviour:
   vAxis: 0
   canMove: 1
   canAttack: 1
+  MissAttack: 0
   attackArea: {fileID: 852935209}
   moveVec: {x: 0, y: 0, z: 0}
   anim: {fileID: 0}
@@ -1712,6 +1713,7 @@ MonoBehaviour:
   vAxis: 0
   canMove: 1
   canAttack: 1
+  MissAttack: 0
   attackArea: {fileID: 160277856}
   moveVec: {x: 0, y: 0, z: 0}
   anim: {fileID: 1815612477558229784}
