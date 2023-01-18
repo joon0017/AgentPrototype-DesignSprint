@@ -135,6 +135,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1202293337a02a46b8c087c137c5b2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  p: {fileID: 0}
+  a: {fileID: 0}
 --- !u!65 &464692866
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -992,7 +994,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   hAxis: 0
+  vAxis: 0
+  canMove: 1
+  canAttack: 1
+  MissAttack: 0
   attackArea: {fileID: 852935209}
+  moveVec: {x: 0, y: 0, z: 0}
+  anim: {fileID: 0}
 --- !u!4 &1031632036102306821
 Transform:
   m_ObjectHideFlags: 0

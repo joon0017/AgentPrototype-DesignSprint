@@ -159,10 +159,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
   charPrefabs:
-  - {fileID: 6581053675035918951, guid: ca6178868e27df74993661e5a035ff68, type: 3}
-  - {fileID: 4151913634272704924, guid: 08eb4c7e962deb5438c0a45e4c7a655d, type: 3}
-  - {fileID: 3571561372350424818, guid: 33215237599da1b48a7efd2bc166666a, type: 3}
-  - {fileID: 7200739954160121480, guid: 797c71938fca4ec4ba52058578ed3b96, type: 3}
+  - {fileID: 1687176087357348129, guid: ca6178868e27df74993661e5a035ff68, type: 3}
+  - {fileID: 7187565423662124622, guid: 08eb4c7e962deb5438c0a45e4c7a655d, type: 3}
+  - {fileID: 9011037788648177380, guid: 08fb7c85b2f056e47aff3ce7bc9277bc, type: 3}
+  - {fileID: 3471173717946796510, guid: 797c71938fca4ec4ba52058578ed3b96, type: 3}
+  - {fileID: 2578496819362142166, guid: 4534fd5555d472f45ab1dd65f2bff1b7, type: 3}
   spawn1: {fileID: 0}
   spawn2: {fileID: 0}
   spawn3: {fileID: 0}
