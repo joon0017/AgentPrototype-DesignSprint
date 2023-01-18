@@ -30,7 +30,7 @@ public class Target1 : MonoBehaviour
         // Debug.Log(coll.gameObject.name);
 
         if (coll.gameObject.CompareTag("Wall") || coll.gameObject.CompareTag("Trap")){
-            this.transform.localPosition = Generator.transform.position + new Vector3(Random.Range(-12, 12), 0.5f, Random.Range(-12, 12));
+            this.transform.localPosition = Generator.transform.localPosition + new Vector3(Random.Range(-12, 12), 0.5f, Random.Range(-12, 12));
         }
             // Vector3 rndVec3 = new Vector3(Random.Range(-12, 12), transform.position.y, Random.Range(-12, 12));
             // obj.transform.localPosition = rndVec3 + transform.position;
