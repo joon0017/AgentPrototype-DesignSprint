@@ -22,9 +22,6 @@ public class Enemy : MonoBehaviour
             p.Play();
             a.SetTrigger("isDead");
         }
-        else if(c.gameObject.tag=="Magic"){
-            Destroy(gameObject);
-        }
     }
     void Dead(){
         GetComponent<Rigidbody>().useGravity=true;
