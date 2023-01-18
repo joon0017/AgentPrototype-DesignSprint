@@ -5,7 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class GameStratSystem : MonoBehaviour
 {
-public void StartGame(){
-        SceneManager.LoadScene("SelectChar");
+
+    private void Update(){
+        if(Input.anyKeyDown)
+            SceneManager.LoadScene("SelectChar");
     }
 }
