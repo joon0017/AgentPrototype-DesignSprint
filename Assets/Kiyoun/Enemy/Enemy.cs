@@ -21,7 +21,7 @@ public class Enemy : MonoBehaviour
         if(c.gameObject.tag=="Weapon"){
             p.Play();
             a.SetTrigger("isDead");
-        }
+        }   
     }
     void Dead(){
         GetComponent<Rigidbody>().useGravity=true;

@@ -15,4 +15,8 @@ public class Ball : Projectile
     {
         Duration();
     }
+    void OnTriggerEnter(Collider c){
+        if(c.gameObject.tag=="Wall")
+            Destroy(gameObject);
+    }
 }
