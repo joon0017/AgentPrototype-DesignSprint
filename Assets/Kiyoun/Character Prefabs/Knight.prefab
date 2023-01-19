@@ -420,6 +420,7 @@ GameObject:
   - component: {fileID: 1937677867262343708}
   - component: {fileID: 1937677867262343709}
   - component: {fileID: 1937677867262343714}
+  - component: {fileID: 2448334591461971905}
   m_Layer: 0
   m_Name: Knight
   m_TagString: Untagged
@@ -518,6 +519,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!135 &2448334591461971905
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1937677867262343711}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &2083356039251247354
 GameObject:
   m_ObjectHideFlags: 0

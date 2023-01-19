@@ -53,12 +53,11 @@ public class Wizard : CharacterController
             if(hit.collider.tag == "Target"){
                 canAttack=true;
                 spellSpawn = new Vector3(hit.collider.transform.position.x, hit.collider.transform.position.y, hit.collider.transform.position.z);
+                canMove=false;
+                anim.SetTrigger("Attack");
             }   
         }
         //적을 못찾으면 공격 불가능
-        else {
-            canAttack=false;
-        }
         
     }
     public override void AttackStart(){

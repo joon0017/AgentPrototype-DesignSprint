@@ -20,12 +20,12 @@ public class Enemy : MonoBehaviour
     void OnTriggerStay(Collider c){
         if(c.gameObject.tag=="Weapon"){
             p.Play();
+            GetComponent<BoxCollider>().enabled=false;
             a.SetTrigger("isDead");
         }   
     }
     void Dead(){
         GetComponent<Rigidbody>().useGravity=true;
-        GetComponent<BoxCollider>().enabled=false;
         Destroy(gameObject,2f);
     }
 }

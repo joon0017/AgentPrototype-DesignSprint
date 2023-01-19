@@ -34,13 +34,12 @@ public class CharacterController : MonoBehaviour
             transform.LookAt(transform.position + moveVec);
             anim.SetBool("Moving",moveVec != Vector3.zero);
         }
-        if(Input.GetKeyDown(KeyCode.Space)&&canAttack)
-        {
-            anim.SetTrigger("Attack");
-        }
+        // if(Input.GetKeyDown(KeyCode.Space)&&canAttack)
+        // {
+        //     anim.SetTrigger("Attack");
+        // }
     }
     public virtual void AttackStart(){
-        canMove=false;
         canAttack=false;
         // this.gameObject.GetComponent<KnightAgent>().SetRWD(MissAttack);
         // this.gameObject.GetComponent<KnightAgent>().AttackNum++;
@@ -56,4 +55,6 @@ public class CharacterController : MonoBehaviour
     public void onCollisionExit(Collision c){
         moveVec = Vector3.zero;
     }
+
+    
 }
