@@ -9,6 +9,7 @@ public class Gilbert_Agent_Prototype1 : Agent
     //Agent Components
     [SerializeField]GameObject enemySpawner;
     [SerializeField]Transform[] targets;
+    Rigidbody rb;
     Transform tr;
     Vector3 startPos;
     int maxCount;
@@ -16,16 +17,17 @@ public class Gilbert_Agent_Prototype1 : Agent
 
     //Control Variables
     public float speed;
-    public bool canMove = true;
-    public bool canAttack = true;
+    bool canMove = true;
+    bool canAttack = true;
 
     public BoxCollider attackArea;
-    public Vector3 moveVec;
+    Vector3 moveVec;
     public Animator anim;
     public override void Initialize(){
         tr = GetComponent<Transform>();
         startPos = tr.localPosition;
         maxCount = targets.Length;
+        rb = GetComponent<Rigidbody>();
     }
 
     public override void OnEpisodeBegin(){
@@ -40,7 +42,6 @@ public class Gilbert_Agent_Prototype1 : Agent
         {
             Vector3 rndVec3 = new Vector3(Random.Range(-12, 12), 0.5f, Random.Range(-12, 12));
             target.transform.localPosition = rndVec3 + enemySpawner.transform.localPosition;
-            target.gameObject.SetActive(true);
         }
     }
 
@@ -64,6 +65,7 @@ public class Gilbert_Agent_Prototype1 : Agent
             tr.LookAt(tr.position + moveVec);
             anim.SetBool("Moving",moveVec != Vector3.zero);
         }
+        rb.velocity = Vector3.zero;
         SetReward(-0.0005f);
     }
 
@@ -73,7 +75,7 @@ public class Gilbert_Agent_Prototype1 : Agent
         {
             SetReward(-0.01f);
         }
-        else if (collision.gameObject.CompareTag("Wall") || collision.gameObject.CompareTag("DeadZone"))
+        else if (collision.gameObject.CompareTag("Trap") || collision.gameObject.CompareTag("DeadZone"))
         {
             SetReward(-1.0f);
             EndEpisode();
@@ -96,26 +98,22 @@ public class Gilbert_Agent_Prototype1 : Agent
         }
     }
 
-    //reset velocity
-    public void onCollisionExit(Collision c){
-        moveVec = Vector3.zero;
-    }
-
     //anim methods
-    public virtual void AttackStart(){
+    public void AttackStart(){
         canMove=false;
         canAttack=false;
     }
-    public virtual void Damage(){
+    public void Damage(){
         attackArea.enabled=true;
     }
-    public virtual void AttackEnd(){
+    public void AttackEnd(){
         canMove = true;
         canAttack = true;
         attackArea.enabled=false;
     }
 
-    public void KillEnemy(){
+    public void KillEnemy(GameObject hitEnemy){
+        hitEnemy.transform.localPosition += new Vector3(0, -10.0f, 0);
         killCount++;
         if(killCount >= maxCount){
             SetReward(0.3f);

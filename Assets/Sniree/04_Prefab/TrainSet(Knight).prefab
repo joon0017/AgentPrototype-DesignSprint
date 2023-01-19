@@ -126,7 +126,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 14
   m_CollisionDetection: 0
 --- !u!1 &705420985142272925
 GameObject:
@@ -241,7 +241,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 762949039738120507}
   m_LocalRotation: {x: 0.0000000218557, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -12.6171875, y: 0, z: 10.018591}
+  m_LocalPosition: {x: -12.6171875, y: 0.58, z: 10.018591}
   m_LocalScale: {x: 2.0695, y: 2.0695, z: 2.0695}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -443,7 +443,7 @@ MonoBehaviour:
   m_Model: {fileID: 0}
   m_InferenceDevice: 3
   m_BehaviorType: 0
-  m_BehaviorName: Gilbert_Prototype1
+  m_BehaviorName: Gilbert_Prototype
   TeamId: 0
   m_UseChildSensors: 1
   m_UseChildActuators: 1
@@ -477,10 +477,7 @@ MonoBehaviour:
   - {fileID: 3447152699610714507}
   - {fileID: 3447152699330161969}
   speed: 10
-  canMove: 1
-  canAttack: 1
   attackArea: {fileID: 569636099944804023}
-  moveVec: {x: 0, y: 0, z: 0}
   anim: {fileID: 569636098689391236}
 --- !u!114 &803515203591982526
 MonoBehaviour:
@@ -2400,7 +2397,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6323379446532598303}
   m_LocalRotation: {x: 0.000000012374276, y: -0.82428116, z: -0.000000018015239, w: 0.5661807}
-  m_LocalPosition: {x: 10.145772, y: 0, z: 4.2748976}
+  m_LocalPosition: {x: 10.145772, y: 0.16, z: 4.2748976}
   m_LocalScale: {x: 1.8042997, y: 1.8043, z: 1.8042997}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2498,7 +2495,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6330063399597335895}
   m_LocalRotation: {x: 0.00000001948224, y: -0.45321146, z: -0.000000009905255, w: 0.891403}
-  m_LocalPosition: {x: 11.68, y: 0, z: -10.04}
+  m_LocalPosition: {x: 11.68, y: 0.34, z: -10.04}
   m_LocalScale: {x: 2.2551, y: 2.2551, z: 2.2550998}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3084,7 +3081,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6900498612097062465}
   m_LocalRotation: {x: 0.0000000218557, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -13.58, y: 0, z: -11.01141}
+  m_LocalPosition: {x: -13.58, y: 0.19, z: -11.01141}
   m_LocalScale: {x: 2.264, y: 2.264, z: 2.264}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3637,7 +3634,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8119463447203898549}
   m_LocalRotation: {x: 0.0000000218557, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 12.56, y: 0, z: 4.37}
+  m_LocalPosition: {x: 12.56, y: 0.18, z: 4.37}
   m_LocalScale: {x: 1.8043, y: 1.8043, z: 1.8043}
   m_ConstrainProportionsScale: 0
   m_Children: []

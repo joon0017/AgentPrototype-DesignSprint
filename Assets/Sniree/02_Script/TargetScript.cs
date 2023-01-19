@@ -9,8 +9,7 @@ public class TargetScript : MonoBehaviour
     void OnTriggerStay(Collider coll)
     {
         if(coll.gameObject.tag=="Weapon"){
-            agent.GetComponent<Gilbert_Agent_Prototype1>().KillEnemy();
-            this.gameObject.SetActive(false);
+            agent.GetComponent<Gilbert_Agent_Prototype1>().KillEnemy(this.gameObject);
         }
     }
 
