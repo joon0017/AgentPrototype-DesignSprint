@@ -1622,7 +1622,7 @@ MonoBehaviour:
   speed: 5
   canMove: 1
   canAttack: 1
-  MissAttack: -0.05
+  MissAttack: -0.3
   attackArea: {fileID: 2360515472478199570}
   moveVec: {x: 0, y: 0, z: 0}
   anim: {fileID: 2360515471628439972}
@@ -1651,7 +1651,7 @@ MonoBehaviour:
   m_Model: {fileID: 0}
   m_InferenceDevice: 3
   m_BehaviorType: 0
-  m_BehaviorName: Knight
+  m_BehaviorName: KnightLong
   TeamId: 0
   m_UseChildSensors: 1
   m_UseChildActuators: 1
