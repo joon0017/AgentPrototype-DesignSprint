@@ -248,6 +248,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isLearn: 0
   tgt: {fileID: 0}
+  selectedCharacter: []
+  tutorial: {fileID: 0}
+  tutorialPanel: {fileID: 0}
+  TextManager: {fileID: 0}
+  strid: 0
+  isClick: 0
 --- !u!4 &708541483
 Transform:
   m_ObjectHideFlags: 0
