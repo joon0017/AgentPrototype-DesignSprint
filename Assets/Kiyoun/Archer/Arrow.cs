@@ -5,9 +5,11 @@ using UnityEngine;
 public class Arrow : Projectile
 {
 
+    Vector3 targetPosition;
     // Start is called before the first frame update
     void Start()
     {
+        targetPosition = GameObject.Find("Archer").GetComponent<Archer>().targetPosition;
         Shoot();
     }
 
@@ -15,6 +17,10 @@ public class Arrow : Projectile
     void Update()
     {
         Duration();
+    }
+    public override void Shoot(){
+        Vector3 direction = (targetPosition - transform.position).normalized;
+        GetComponent<Rigidbody>().AddForce(direction * speed);
     }
     //if arrow hits something, destroy self
     void OnTriggerEnter(Collider c){

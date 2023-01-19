@@ -15,4 +15,11 @@ public class Thief : CharacterController
     {
         Game();
     }
+    void OnTriggerEnter(Collider other){
+        if(other.gameObject.tag == "Target"){
+            canMove=false;
+            transform.LookAt(other.transform.position);
+            anim.SetTrigger("Attack");
+        }
+    }
 }

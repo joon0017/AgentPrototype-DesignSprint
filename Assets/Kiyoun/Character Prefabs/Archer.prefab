@@ -1616,6 +1616,8 @@ MonoBehaviour:
   moveVec: {x: 0, y: 0, z: 0}
   anim: {fileID: 6178844084308759414}
   arrow: {fileID: 7090199999501015754, guid: 3c73781b5eef50d4ab2201ca04ca0bcd, type: 3}
+  rayDistance: 5
+  raySpread: 10
 --- !u!54 &6178844084308759412
 Rigidbody:
   m_ObjectHideFlags: 0

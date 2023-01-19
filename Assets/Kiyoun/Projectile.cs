@@ -17,7 +17,7 @@ public class Projectile : MonoBehaviour
     {
         
     }
-    public void Shoot(){
+    public virtual void Shoot(){
         GetComponent<Rigidbody>().AddForce(transform.forward*speed);
     }
     public void Duration(){
