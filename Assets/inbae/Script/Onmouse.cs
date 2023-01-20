@@ -5,7 +5,8 @@ using UnityEngine;
 
  public class Onmouse : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
  {
-    public GameObject logoText;
+    [SerializeField]
+    GameObject logoText;
 
      public void OnPointerEnter(PointerEventData eventData)
      {

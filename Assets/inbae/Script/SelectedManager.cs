@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class SelectedManager : MonoBehaviour
 {
-    public GameManager gameManager;
-    public GameObject[] charPrefabs;
-    public GameObject spawn1;
-    public GameObject spawn2;
-    public GameObject spawn3;
+    GameManager gameManager;
+    GameObject spawn1;
+    GameObject spawn2;
+    GameObject spawn3;
+
+    [SerializeField]
+    GameObject[] charPrefabs;
 
     void Start()
     {
@@ -107,7 +109,28 @@ public class SelectedManager : MonoBehaviour
     void SpawnInst(GameObject spawnObject, Vector3 position, GameObject prefab)
     {
         spawnObject = Instantiate (prefab) as GameObject;
-        spawnObject.name = "Player";
+        spawnObject.tag = "Player";
+        if(prefab.name == "Knight")
+        {
+            spawnObject.name = "Knight";
+        }
+        else if(prefab.name == "Archer")
+        {
+            spawnObject.name = "Archer";
+        }
+        else if(prefab.name == "Wizard")
+        {
+            spawnObject.name = "Wizard";
+        }
+        else if(prefab.name == "Thief")
+        {
+            spawnObject.name = "Thief";
+        }
+        else if(prefab.name == "Bard")
+        {
+            spawnObject.name = "Bard";
+        }
+
         spawnObject.transform.position = position;
     }
 }
