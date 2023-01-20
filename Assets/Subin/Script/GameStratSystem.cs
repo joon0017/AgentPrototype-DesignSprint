@@ -7,7 +7,9 @@ public class GameStratSystem : MonoBehaviour
 {
 
     private void Update(){
-        if(Input.anyKeyDown)
+        if(Input.anyKeyDown){
+            PlayerPrefs.SetInt("Tutorial",3);
             SceneManager.LoadScene("SelectChar");
+        }
     }
 }
