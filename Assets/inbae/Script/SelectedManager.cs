@@ -107,7 +107,28 @@ public class SelectedManager : MonoBehaviour
     void SpawnInst(GameObject spawnObject, Vector3 position, GameObject prefab)
     {
         spawnObject = Instantiate (prefab) as GameObject;
-        spawnObject.name = "Player";
+        spawnObject.tag = "Player";
+        if(prefab.name == "Knight")
+        {
+            spawnObject.name = "Knight";
+        }
+        else if(prefab.name == "Archer")
+        {
+            spawnObject.name = "Archer";
+        }
+        else if(prefab.name == "Wizard")
+        {
+            spawnObject.name = "Wizard";
+        }
+        else if(prefab.name == "Thief")
+        {
+            spawnObject.name = "Thief";
+        }
+        else if(prefab.name == "Bard")
+        {
+            spawnObject.name = "Bard";
+        }
+
         spawnObject.transform.position = position;
     }
 }
