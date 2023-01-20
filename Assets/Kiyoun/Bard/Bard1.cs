@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Archer : CharacterController
+public class Bard1 : CharacterController
 {
-    public GameObject arrow;
+    public GameObject spell;
     public float rayDistance;
     public float raySpread;
     Ray ray1;
@@ -16,7 +16,7 @@ public class Archer : CharacterController
     Vector3 origin;
     float temp = 0;
     public RaycastHit hit;
-    public Vector3 targetPosition;
+    //public Vector3 targetPosition;
     // Start is called before the first frame update
     void Start()
     {
@@ -41,25 +41,23 @@ public class Archer : CharacterController
         Debug.DrawRay(ray3.origin, ray3.direction * rayDistance, Color.blue);
         if(Physics.Raycast(ray1, out hit, rayDistance)||Physics.Raycast(ray2, out hit, rayDistance)||Physics.Raycast(ray3, out hit, rayDistance)){
             if(hit.collider.tag == "Target"){
-                targetPosition= new Vector3(hit.collider.transform.position.x, hit.collider.transform.position.y, hit.collider.transform.position.z);
+                //targetPosition= new Vector3(hit.collider.transform.position.x, hit.collider.transform.position.y, hit.collider.transform.position.z);
                 canMove=false;
+                transform.LookAt(hit.collider.transform);
                 anim.SetTrigger("Attack");
-
             }   
         }
     }
-     public override void AttackStart(){
+    public override void AttackStart(){
         canAttack=false;
         (rayDistance, temp) = (temp, rayDistance);
-        // this.gameObject.GetComponent<KnightAgent>().SetRWD(MissAttack);
-        // this.gameObject.GetComponent<KnightAgent>().AttackNum++;
     }
     public override void Damage(){
-        Instantiate(arrow,attackArea.transform.position,attackArea.transform.rotation);
+        Instantiate(spell,attackArea.transform.position,attackArea.transform.rotation);
     }
     public override void AttackEnd(){
-        canMove = true;
-        canAttack = true;
+        canMove=true;
+        canAttack=true;
         (rayDistance, temp) = (temp, rayDistance);
     }
 }
