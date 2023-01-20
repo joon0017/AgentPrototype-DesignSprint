@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class SelectedManager : MonoBehaviour
 {
-    public GameManager gameManager;
-    public GameObject[] charPrefabs;
-    public GameObject spawn1;
-    public GameObject spawn2;
-    public GameObject spawn3;
+    GameManager gameManager;
+    GameObject spawn1;
+    GameObject spawn2;
+    GameObject spawn3;
+
+    [SerializeField]
+    GameObject[] charPrefabs;
 
     void Start()
     {

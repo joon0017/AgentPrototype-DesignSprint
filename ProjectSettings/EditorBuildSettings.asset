@@ -18,7 +18,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Fight.unity
     guid: 40a3dbe816b8d8e4cb3f35e647b6999e
   - enabled: 1
-    path: Assets/Scenes/LearningFinish.unity
+    path: Assets/Scenes/FightFinish.unity
     guid: 4055120a58e47524394e3797791ca56c
   - enabled: 1
     path: Assets/Scenes/SelectChar.unity
