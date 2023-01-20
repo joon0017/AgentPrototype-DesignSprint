@@ -9,7 +9,12 @@ public class SceneData : MonoBehaviour
     public int id;
 
     private void Awake(){
-        manager.click(id);
+        if(id == PlayerPrefs.GetInt("Tutorial")){
+            manager.click(id);
+        }
+        else{
+            manager.tutorialPanel.SetActive(false);
+        }
     }
 
     private void Update(){

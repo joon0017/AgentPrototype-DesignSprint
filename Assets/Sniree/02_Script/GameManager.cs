@@ -54,6 +54,7 @@ public class GameManager : MonoBehaviour
         string txtData = TextManager.GetTxt(id, strid);
         
         if(txtData==null){
+            PlayerPrefs.SetInt("Tutorial",PlayerPrefs.GetInt("Tutorial")+1);
             isClick=false;
             strid =0;
             return;
@@ -71,5 +72,4 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene("MainPage");
         }
     }
-
 }
