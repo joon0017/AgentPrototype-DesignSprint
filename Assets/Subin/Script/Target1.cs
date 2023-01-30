@@ -23,6 +23,8 @@ public class Target1 : MonoBehaviour
             KnightAgent ka = coll.gameObject.transform.parent.gameObject.GetComponent<KnightAgent>();
             // ka.killed = this.gameObject;
             ka.killEnemy();
+            //this object Active false
+            this.gameObject.SetActive(false);
         }
     }
 

@@ -3,19 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.MLAgents;
 using Unity.MLAgents.Actuators;
-using UnityEngine.UI;
 
-public class KnightAgent : Agent
+public class MageAgent : Agent
 {
     private Transform tr;
     private Rigidbody rb;
     private Vector3 dir;
     private Vector3 startPos;
     public int AttackNum;
-    private int previousChoice = -1;
 
     //enemies (target)
-    public int enemyNum = 0;
+    public int enemyNum;
     public Transform[] targetTrs;
     public GameObject killed;
     
@@ -35,11 +33,22 @@ public class KnightAgent : Agent
     public bool canAttack = true;
     public float MissAttack;
 
-    public BoxCollider attackArea;
     public Vector3 moveVec;
     public Animator anim;
 
 
+    public GameObject spell;
+    public Vector3 spellSpawn;
+    public float rayDistance = 5f;
+    public float raySpread = 10f;
+    Ray ray1;
+    Ray ray2;
+    Ray ray3;
+    Vector3 rayDirection;
+    Quaternion spreadRotation;
+    Vector3 spreadDirection;
+    Vector3 origin;
+    float temp = 0;
 
     //외부 객체에서 Reward를 설정할 수 있도록 해 줌
     public void SetRWD(float number){
@@ -64,11 +73,10 @@ public class KnightAgent : Agent
         AttackNum = 0;
 
         //적 위치 재배치
-        for (int i = 0; i<= enemyNum; i++)
+        foreach (Transform target in targetTrs)
         {
             Vector3 rndVec3 = new Vector3(Random.Range(-12, 12), 0.5f, Random.Range(-12, 12));
-            targetTrs[i].transform.localPosition = rndVec3 + enemySpawner.transform.localPosition;
-            targetTrs[i].gameObject.SetActive(true);
+            target.transform.localPosition = rndVec3 + enemySpawner.transform.localPosition;
         }
 
         //플레이어 위치 초기화
@@ -87,6 +95,13 @@ public class KnightAgent : Agent
                 if (killed == t.gameObject) continue;
                 sensor.AddObservation(t.localPosition);
             }
+        //taget location
+        foreach (Transform t in targetTrs) {
+            if (killed == t.gameObject) continue;
+            sensor.AddObservation(t.localPosition);
+        }
+        //target Number
+        sensor.AddObservation(enemyNum);
         //trap 위치
         foreach (Transform t in wallTrs) sensor.AddObservation(t.localPosition);
         //wall 위치
@@ -95,18 +110,6 @@ public class KnightAgent : Agent
         sensor.AddObservation(tr.localPosition);
         //플레이어 방향
         sensor.AddObservation(tr.forward);
-        //taget location
-        foreach (Transform t in targetTrs) {
-            if (killed == t.gameObject) continue;
-            sensor.AddObservation(t.localPosition);
-        }
-        // sensor.AddObservation(rb.velocity.x);
-        // sensor.AddObservation(rb.velocity.z);
-
-
-        //target Number
-        sensor.AddObservation(enemyNum);
-        
         }
         catch (System.Exception)
         {
@@ -122,6 +125,7 @@ public class KnightAgent : Agent
     */
     public override void OnActionReceived(ActionBuffers actions)
     {
+
         if(canMove){
             float h = Mathf.Clamp(actions.ContinuousActions[0], -1.0f, 1.0f);
             float v = Mathf.Clamp(actions.ContinuousActions[1], -1.0f, 1.0f);
@@ -134,12 +138,7 @@ public class KnightAgent : Agent
         {
             anim.SetTrigger("Attack");
         }
-
-        int currentChoice = actions.DiscreteActions[0];
-        if(currentChoice == previousChoice){
-            SetReward(0.01f);
-        }
-
+       
         SetReward(-0.0001f);
     }
 
@@ -152,7 +151,6 @@ public class KnightAgent : Agent
         continuousActions[1] = Input.GetAxis("Vertical");
         ActionSegment<int> discreteActions = actionsOut.DiscreteActions;
         discreteActions[0] = Input.GetKey(KeyCode.Space) ? 1 : 0;
-        // Debug.Log($"[0] = {continuousActions[0]} [1] = {continuousActions[1]} : [2] = {discreteActions[0]}");
     }
 
     //공격 애니메이션 관련 함수들.
@@ -161,14 +159,51 @@ public class KnightAgent : Agent
         canAttack=false;
         SetReward(MissAttack);
         AttackNum++;
+
+        RaycastHit hit;
+
+        //ray는 항상 캐릭터의 앞을 바라본다
+        rayDirection = transform.forward;
+        //바닥에서 1 떨어져야 적을 확인 가능
+        origin = transform.position + new Vector3(0, 1, 0);
+        //직선 앞으로 쏘아지는 ray
+        ray1 = new Ray(origin, rayDirection);
+        Debug.DrawRay(ray1.origin, ray1.direction * rayDistance, Color.red);
+
+        //ray의 각도를 계산하는 식
+        spreadRotation = Quaternion.AngleAxis(-raySpread, transform.up);
+        spreadDirection = spreadRotation * rayDirection;
+        //2번째 ray (왼쪽 10도로 쏘아지는 ray)
+        ray2 = new Ray(origin, spreadDirection);
+        Debug.DrawRay(ray2.origin, ray2.direction * rayDistance, Color.green);
+
+        //ray의 각도를 계산하는 식
+        spreadRotation = Quaternion.AngleAxis(raySpread, transform.up);
+        spreadDirection = spreadRotation * rayDirection;
+        //3번째 ray (오른쪽 10도로 쏘아지는 ray)
+        ray3 = new Ray(origin, spreadDirection);
+        Debug.DrawRay(ray3.origin, ray3.direction * rayDistance, Color.blue);
+        
+        //ray1||2||3에 적이 있을 경우, 공격 가능하고, 마법 소환 위치를 적이 있는 위치로 변경
+        if(Physics.Raycast(ray1, out hit, rayDistance)||Physics.Raycast(ray2, out hit, rayDistance)||Physics.Raycast(ray3, out hit, rayDistance)){
+            if(hit.collider.tag == "Target"){
+                canAttack=true;
+                spellSpawn = new Vector3(hit.collider.transform.position.x, hit.collider.transform.position.y, hit.collider.transform.position.z);
+                canMove=false;
+                anim.SetTrigger("Attack");
+            }   
+        }
+        //적을 못찾으면 공격 불가능
+        //swap rayDistance and temp ->  공격을 하는 중에는 다시 공격을 가능하게 하면 안되기 때문에 ray의 길이를 0으로 함으로써 적을 찾지 못하게 함
+        (rayDistance, temp) = (temp, rayDistance);
     }
     public void Damage(){
-        attackArea.enabled=true;
+        Instantiate(spell, spellSpawn, transform.rotation);
     }
     public void AttackEnd(){
         canMove = true;
-        attackArea.enabled=false;
-        StartCoroutine(CoolTime(2f));
+        canAttack = true;
+        (rayDistance, temp) = (temp, rayDistance);
     }
 
 
@@ -196,16 +231,8 @@ public class KnightAgent : Agent
     public void killEnemy(){
         SetReward(1.0f);
         enemyNum--;
-        if(enemyNum == -1){
+        if(enemyNum == 0){
             EndEpisode();
         }
     }
-
-    IEnumerator CoolTime(float time){
-        yield return new WaitForSeconds(time);
-        canAttack = true;
-    }
-
-    //이전과 같은 입력을 선택하면 +0.005
-    //적 거리 계산 해서 가까워 질수록 +0.005
 }
