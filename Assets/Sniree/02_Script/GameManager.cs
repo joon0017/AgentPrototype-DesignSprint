@@ -33,8 +33,8 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        enemys = GenerateMaps.Instance.EnemyNum;
-        Debug.Log(enemys);
+        /*enemys = GenerateMaps.Instance.EnemyNum;
+        Debug.Log(enemys);*/
     }
 
     private void Update() {

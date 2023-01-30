@@ -6055,7 +6055,6 @@ MonoBehaviour:
   TextManager: {fileID: 765213965}
   strid: 0
   isClick: 0
-  CStutorial: 0
 --- !u!4 &1173102840
 Transform:
   m_ObjectHideFlags: 0
@@ -9056,7 +9055,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 1173102839}
-  id: 3
+  id: 1
 --- !u!4 &1622480244
 Transform:
   m_ObjectHideFlags: 0
