@@ -12,7 +12,8 @@ public class KnightAgent : Agent
     private Vector3 dir;
     private Vector3 startPos;
     public int AttackNum;
-    private int previousChoice = -1;
+    private int previousChoice = 0;
+    private float distance;
 
     //enemies (target)
     public int enemyNum = 0;
@@ -28,7 +29,7 @@ public class KnightAgent : Agent
     private Transform[] trapTrs;
 
     public GameObject enemySpawner;
-
+    public GameObject ground;
 
     public float speed;
     public bool canMove = true;
@@ -38,6 +39,8 @@ public class KnightAgent : Agent
     public BoxCollider attackArea;
     public Vector3 moveVec;
     public Animator anim;
+
+    public GameObject cube;
 
 
 
@@ -56,6 +59,7 @@ public class KnightAgent : Agent
         startPos = tr.localPosition;
         for (int i = 0; i < walls.Length; i++) wallTrs[i] = walls[i].GetComponent<Transform>();
         for (int i = 0; i < traps.Length; i++) trapTrs[i] = traps[i].GetComponent<Transform>();
+        distance = 0;
     }
 
     //에피소드 시작 시 한번 불러옴
@@ -73,8 +77,9 @@ public class KnightAgent : Agent
 
         //플레이어 위치 초기화
         tr.localPosition = startPos;
+        CubeColorChanger(11);
 
-
+        distance = 0;
     }
 
 
@@ -93,17 +98,12 @@ public class KnightAgent : Agent
         foreach (Transform t in trapTrs) sensor.AddObservation(t.localPosition);
         //플레이어 위치
         sensor.AddObservation(tr.localPosition);
-        //플레이어 방향
-        sensor.AddObservation(tr.forward);
-        //taget location
-        foreach (Transform t in targetTrs) {
-            if (killed == t.gameObject) continue;
-            sensor.AddObservation(t.localPosition);
-        }
+        //enemy location
+        sensor.AddObservation(targetTrs[0].localPosition);
         // sensor.AddObservation(rb.velocity.x);
         // sensor.AddObservation(rb.velocity.z);
-
-
+        float distanceA = Vector3.Distance(tr.localPosition, targetTrs[0].localPosition);
+        sensor.AddObservation(distanceA);
         //target Number
         sensor.AddObservation(enemyNum);
         
@@ -122,6 +122,8 @@ public class KnightAgent : Agent
     */
     public override void OnActionReceived(ActionBuffers actions)
     {
+        float distanceB = Vector3.Distance(tr.localPosition, targetTrs[0].localPosition);
+
         if(canMove){
             float h = Mathf.Clamp(actions.ContinuousActions[0], -1.0f, 1.0f);
             float v = Mathf.Clamp(actions.ContinuousActions[1], -1.0f, 1.0f);
@@ -133,11 +135,25 @@ public class KnightAgent : Agent
         if(actions.DiscreteActions[0] == 1 && canAttack)
         {
             anim.SetTrigger("Attack");
+            CubeColorChanger(3);
         }
 
         int currentChoice = actions.DiscreteActions[0];
         if(currentChoice == previousChoice){
             SetReward(0.01f);
+            previousChoice = currentChoice;
+            CubeColorChanger(4);
+        }
+
+        if(distanceB < distance){
+            SetReward(0.01f);
+            distance = distanceB;
+            CubeColorChanger(8);
+        }
+        else if(distanceB > distance){
+            SetReward(-0.01f);
+            distance = distanceB;
+            CubeColorChanger(6);
         }
 
         SetReward(-0.0001f);
@@ -180,23 +196,27 @@ public class KnightAgent : Agent
         if (collision.gameObject.CompareTag("Wall"))
         {
             SetReward(-0.01f);
+            CubeColorChanger(3);
         }
         else if (collision.gameObject.CompareTag("Trap") || collision.gameObject.CompareTag("DeadZone"))
         {
             SetReward(-1.0f);
+            CubeColorChanger(0);
             EndEpisode();
         }
         else if (collision.gameObject.CompareTag("Target"))
         {
             SetReward(-0.5f);
+            CubeColorChanger(0);
             EndEpisode();
         }
     }
 
     public void killEnemy(){
-        SetReward(1.0f);
+        SetReward(3.0f);
         enemyNum--;
         if(enemyNum == -1){
+            CubeColorChanger(2);
             EndEpisode();
         }
     }
@@ -208,4 +228,40 @@ public class KnightAgent : Agent
 
     //이전과 같은 입력을 선택하면 +0.005
     //적 거리 계산 해서 가까워 질수록 +0.005
+
+    public void CubeColorChanger(int num){
+        if(num == 0){
+            cube.GetComponent<Renderer>().material.color = Color.red;
+        }
+        else if(num == 1){
+            cube.GetComponent<Renderer>().material.color = Color.blue;
+        }
+        else if(num == 2){
+            cube.GetComponent<Renderer>().material.color = Color.green;
+        }
+        else if(num == 3){
+            cube.GetComponent<Renderer>().material.color = Color.yellow;
+        }
+        else if(num == 4){
+            cube.GetComponent<Renderer>().material.color = Color.black;
+        }
+        else if(num == 5){
+            cube.GetComponent<Renderer>().material.color = Color.white;
+        }
+        else if(num == 6){
+            cube.GetComponent<Renderer>().material.color = Color.gray;
+        }
+        else if(num == 7){
+            cube.GetComponent<Renderer>().material.color = Color.magenta;
+        }
+        else if(num == 8){
+            cube.GetComponent<Renderer>().material.color = Color.cyan;
+        }
+        else if(num == 9){
+            cube.GetComponent<Renderer>().material.color = Color.clear;
+        }
+        else{
+            cube.GetComponent<Renderer>().material.color = Color.black;
+        }
+    }
 }
