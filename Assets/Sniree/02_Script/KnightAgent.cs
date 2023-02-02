@@ -46,7 +46,7 @@ public class KnightAgent : Agent
 
     //외부 객체에서 Reward를 설정할 수 있도록 해 줌
     public void SetRWD(float number){
-        SetReward(number);
+        AddReward(number);
     }
     
     //새로 생성 되었을 때 기존 값을 입력해줌
@@ -140,23 +140,23 @@ public class KnightAgent : Agent
 
         int currentChoice = actions.DiscreteActions[0];
         if(currentChoice == previousChoice){
-            SetReward(0.01f);
+            AddReward(0.01f);
             previousChoice = currentChoice;
             CubeColorChanger(4);
         }
 
         if(distanceB < distance){
-            SetReward(0.01f);
+            AddReward(0.01f);
             distance = distanceB;
             CubeColorChanger(8);
         }
         else if(distanceB > distance){
-            SetReward(-0.01f);
+            AddReward(-0.01f);
             distance = distanceB;
             CubeColorChanger(6);
         }
 
-        SetReward(-0.0001f);
+        AddReward(-0.0001f);
     }
 
     //유저가 테스트를 하기 위해 사용됨. 입력 받는 값이 ActionBuffers에 저장됨으로, 외부 Script에서 움직임 관련 함수가 있으면 
@@ -175,7 +175,7 @@ public class KnightAgent : Agent
     public void AttackStart(){
         canMove=false;
         canAttack=false;
-        SetReward(MissAttack);
+        AddReward(MissAttack);
         AttackNum++;
     }
     public void Damage(){
@@ -195,25 +195,25 @@ public class KnightAgent : Agent
     {
         if (collision.gameObject.CompareTag("Wall"))
         {
-            SetReward(-0.01f);
+            AddReward(-0.1f);
             CubeColorChanger(3);
         }
         else if (collision.gameObject.CompareTag("Trap") || collision.gameObject.CompareTag("DeadZone"))
         {
-            SetReward(-1.0f);
+            AddReward(-3.0f);
             CubeColorChanger(0);
             EndEpisode();
         }
         else if (collision.gameObject.CompareTag("Target"))
         {
-            SetReward(-0.5f);
+            AddReward(-1.0f);
             CubeColorChanger(0);
             EndEpisode();
         }
     }
 
     public void killEnemy(){
-        SetReward(3.0f);
+        AddReward(10.0f);
         enemyNum--;
         if(enemyNum == -1){
             CubeColorChanger(2);

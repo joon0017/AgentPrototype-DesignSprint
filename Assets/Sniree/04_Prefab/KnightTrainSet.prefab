@@ -1592,7 +1592,7 @@ MonoBehaviour:
   hasUpgradedFromAgentParameters: 1
   MaxStep: 2000
   AttackNum: 0
-  enemyNum: 0
+  enemyNum: 1
   targetTrs:
   - {fileID: 5863321738469574271}
   - {fileID: 553584236492933540}
