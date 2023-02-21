@@ -38,6 +38,9 @@ public class AgentSoccer : Agent
     float m_LateralSpeed;
     float m_ForwardSpeed;
 
+    private Transform tr;
+    private Rigidbody rb;
+
 
     [HideInInspector]
     public Rigidbody agentRb;
@@ -50,6 +53,9 @@ public class AgentSoccer : Agent
 
     public override void Initialize()
     {
+        tr = GetComponent<Transform>();
+        rb = GetComponent<Rigidbody>();
+
         SoccerEnvController envController = GetComponentInParent<SoccerEnvController>();
         if (envController != null)
         {
@@ -93,6 +99,14 @@ public class AgentSoccer : Agent
         agentRb.maxAngularVelocity = 500;
 
         m_ResetParams = Academy.Instance.EnvironmentParameters;
+    }
+
+        public override void CollectObservations(Unity.MLAgents.Sensors.VectorSensor sensor)
+    {
+        sensor.AddObservation(tr.localPosition);
+        sensor.AddObservation(rb.velocity.x);
+        sensor.AddObservation(rb.velocity.y);
+        sensor.AddObservation(rb.velocity.z);
     }
 
     public void MoveAgent(ActionSegment<int> act)
