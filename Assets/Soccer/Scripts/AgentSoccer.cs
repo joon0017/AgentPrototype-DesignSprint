@@ -33,6 +33,9 @@ public class AgentSoccer : Agent
     float m_BallTouch;
     public Position position;
 
+    public GameObject fieldScript;
+    public GameObject ballScript;
+
     const float k_Power = 2000f;
     float m_Existential;
     float m_LateralSpeed;
@@ -103,6 +106,14 @@ public class AgentSoccer : Agent
 
         public override void CollectObservations(Unity.MLAgents.Sensors.VectorSensor sensor)
     {
+        for(int i = 0; i < fieldScript.transform.childCount; i++)
+        {
+            sensor.AddObservation(fieldScript.transform.GetChild(i).localPosition);
+        }
+        sensor.AddObservation(ballScript.transform.localPosition);
+        sensor.AddObservation(ballScript.GetComponent<Rigidbody>().velocity.x);
+        sensor.AddObservation(ballScript.GetComponent<Rigidbody>().velocity.y);
+        sensor.AddObservation(ballScript.GetComponent<Rigidbody>().velocity.z);
         sensor.AddObservation(tr.localPosition);
         sensor.AddObservation(rb.velocity.x);
         sensor.AddObservation(rb.velocity.y);
