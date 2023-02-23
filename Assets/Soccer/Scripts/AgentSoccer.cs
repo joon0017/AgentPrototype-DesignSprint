@@ -104,7 +104,7 @@ public class AgentSoccer : Agent
         m_ResetParams = Academy.Instance.EnvironmentParameters;
     }
 
-    public override void CollectObservations(Unity.MLAgents.Sensors.VectorSensor sensor)
+/*    public override void CollectObservations(Unity.MLAgents.Sensors.VectorSensor sensor)
     {
         for(int i = 0; i < fieldScript.transform.childCount; i++)
         {
@@ -118,7 +118,7 @@ public class AgentSoccer : Agent
         sensor.AddObservation(rb.velocity.x);
         sensor.AddObservation(rb.velocity.y);
         sensor.AddObservation(rb.velocity.z);
-    }
+    }*/
 
     public void MoveAgent(ActionSegment<int> act)
     {
