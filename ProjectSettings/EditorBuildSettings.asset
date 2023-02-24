@@ -20,4 +20,22 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Soccer/Scenes/PlayGame.unity
     guid: 05c49411798a0c34cbb98e36b46075bc
+  - enabled: 1
+    path: Assets/Soccer/Scenes/Map1.unity
+    guid: cef812b41c8d0024ba094eb407406e52
+  - enabled: 1
+    path: Assets/Soccer/Scenes/Map2.unity
+    guid: 08f5fbabbdc0a3049915850936d00373
+  - enabled: 1
+    path: Assets/Soccer/Scenes/Map3.unity
+    guid: 7189123965c23144e8286601b8cbade7
+  - enabled: 1
+    path: Assets/Soccer/Scenes/Map4.unity
+    guid: 49fa7a8b335bb684e9a21d688f763d30
+  - enabled: 1
+    path: Assets/Soccer/Scenes/Map5.unity
+    guid: db6d202371c96ee449789cc49205a453
+  - enabled: 1
+    path: Assets/Soccer/Scenes/Map6.unity
+    guid: 3fa9a2e2a4f9d8547a32a31c97f4b642
   m_configObjects: {}
