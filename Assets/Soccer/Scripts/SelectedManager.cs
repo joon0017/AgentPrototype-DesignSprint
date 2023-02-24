@@ -27,7 +27,7 @@ public class SelectedManager : MonoBehaviour
                 GameManager.GetComponent<GameManager>().selectedCharacter[0] = agentName1;
                 GameManager.GetComponent<GameManager>().selectedCharacter[1] = agentName2;
 
-                SceneManager.LoadScene("MapSelect");
+                SceneManager.LoadScene(GameManager.GetComponent<GameManager>().selectedStage);
             }
     } 
 }
