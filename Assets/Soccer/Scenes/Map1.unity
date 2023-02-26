@@ -555,6 +555,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8122248192225965164, guid: 54f3340298537426e96a6cc530e2d5d8, type: 3}
+      propertyPath: AgentsList.Array.data[1].Agent
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8122248192225965164, guid: 54f3340298537426e96a6cc530e2d5d8, type: 3}
+      propertyPath: AgentsList.Array.data[2].Agent
+      value: 
+      objectReference: {fileID: 1508582745}
     - target: {fileID: 8577361778124631730, guid: 54f3340298537426e96a6cc530e2d5d8, type: 3}
       propertyPath: m_BrainParameters.VectorActionSize.Array.size
       value: 3
@@ -565,6 +573,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 54f3340298537426e96a6cc530e2d5d8, type: 3}
+--- !u!114 &1508582745 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114492261207303438, guid: 54f3340298537426e96a6cc530e2d5d8, type: 3}
+  m_PrefabInstance: {fileID: 1508582744}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a2688ef4a36349f9aa010020c32d198, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1560702051
 PrefabInstance:
   m_ObjectHideFlags: 0
